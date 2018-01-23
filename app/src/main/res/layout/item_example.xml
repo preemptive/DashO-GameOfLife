@@ -8,7 +8,6 @@
 
     <TextView
         android:id="@+id/text"
-        android:text="Example"
         android:textSize="16sp"
         android:textColor="#fff"
         android:layout_width="match_parent"
