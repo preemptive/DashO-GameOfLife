@@ -2,6 +2,13 @@
 
 A sample Android app that demonstrates using DashO with Libraries and Build Flavors.
 
+This sample has four Build Flavors (`menu`, `single`, `withInteraction`, and `withoutInteraction`) and two Flavor Dimensions (`view` and `interactive`) creating four different applications:
+
+* menuWithInteraction - Launches with a menu of three interactive views.
+* menuWithoutInteraction - Launches with a menu of three non-interactive views.
+* singleWithInteraction - Launches an interactive view.
+* singleWithoutInteraction - Launches a non-interactive view.
+
 ## Original Source
 
 This sample is based on [GameOfLifeView](https://github.com/thiagokimo/GameOfLifeView) by [Thiago Rocha](http://kimo.io).

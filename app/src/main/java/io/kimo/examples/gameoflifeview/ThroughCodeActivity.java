@@ -1,13 +1,12 @@
 package io.kimo.examples.gameoflifeview;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+import com.preemptive.dasho.example.gameoflife.AbstractGameOfLifeActivity;
 
 import io.kimo.gameoflifeview.view.GameOfLifeView;
 
-public class ThroughCodeActivity extends AppCompatActivity {
-
-    private GameOfLifeView gameOfLifeView;
+public class ThroughCodeActivity extends AbstractGameOfLifeActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

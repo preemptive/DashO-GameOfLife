@@ -11,6 +11,28 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    flavorDimensions 'view', 'interaction'
+
+    productFlavors {
+        menu {
+            dimension 'view'
+            applicationIdSuffix ".menu"
+        }
+        single {
+            dimension 'view'
+            applicationIdSuffix ".single"
+        }
+        withInteraction {
+            dimension 'interaction'
+            applicationIdSuffix ".interactive"
+        }
+        withoutInteraction {
+            dimension 'interaction'
+            applicationIdSuffix ".noninteractive"
+        }
+
+    }
 }
 
 dependencies {
