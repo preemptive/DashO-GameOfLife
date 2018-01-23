@@ -23,4 +23,3 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-apply from: '../maven_push.gradle'
