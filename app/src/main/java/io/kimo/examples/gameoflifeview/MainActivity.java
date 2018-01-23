@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Utils.configureToolbar(this, false);
-        setTitle("Game of Life View Examples");
+        setTitle(getString(R.string.title));
         configureRecyclerView();
     }
 
@@ -93,9 +93,9 @@ public class MainActivity extends AppCompatActivity {
         private void configureOptions() {
             examplesOptions = new ArrayList<>();
 
-            examplesOptions.add("Default view");
-            examplesOptions.add("Through XML");
-            examplesOptions.add("With custom parameters");
+            examplesOptions.add(getString(R.string.def_view_name));
+            examplesOptions.add(getString(R.string.xml_view_name));
+            examplesOptions.add(getString(R.string.custom_view_name));
         }
     }
 }

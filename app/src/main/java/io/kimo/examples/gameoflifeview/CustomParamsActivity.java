@@ -4,8 +4,6 @@ import android.os.Bundle;
 
 import com.preemptive.dasho.example.gameoflife.AbstractGameOfLifeActivity;
 
-import io.kimo.gameoflifeview.view.GameOfLifeView;
-
 public class CustomParamsActivity extends AbstractGameOfLifeActivity {
 
     @Override
@@ -15,9 +13,8 @@ public class CustomParamsActivity extends AbstractGameOfLifeActivity {
         Utils.configureToolbar(this, true);
         setTitle("Custom Parameters");
 
-        gameOfLifeView = (GameOfLifeView) findViewById(R.id.game_of_life);
+        gameOfLifeView = findViewById(R.id.game_of_life);
     }
-
 
     @Override
     protected void onResume() {
