@@ -2,7 +2,7 @@
 
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '30', numToKeepStr: '15')), pipelineTriggers([])])
 
-node('gradle_18') {
+node('android') {
   stage ('Checkout') {
     checkout scm
   }
