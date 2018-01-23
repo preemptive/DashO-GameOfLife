@@ -2,7 +2,7 @@ package io.kimo.examples.gameoflifeview;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     public static final int DEFAULT_GOL_VIEW_CODE = 0;
     public static final int GOL_VIEW_XML = 1;
@@ -76,7 +76,7 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public void onClick(View v) {
-                switch (getPosition()) {
+                switch (getLayoutPosition()) {
                     case DEFAULT_GOL_VIEW_CODE:
                         startActivity(new Intent(MainActivity.this, ThroughCodeActivity.class));
                         break;

@@ -1,11 +1,11 @@
 package io.kimo.examples.gameoflifeview;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 
 import io.kimo.gameoflifeview.view.GameOfLifeView;
 
-public class CustomParamsActivity extends ActionBarActivity {
+public class CustomParamsActivity extends AppCompatActivity {
 
     private GameOfLifeView gameOfLifeView;
 
