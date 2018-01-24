@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="game_of_life_view">
+    <declare-styleable name="GameOfLifeView">
         <attr name="proportion" format="integer|reference"/>
         <attr name="deadCellColor" format="color|reference"/>
         <attr name="aliveCellColor" format="color|reference"/>
