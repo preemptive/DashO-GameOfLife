@@ -6,7 +6,7 @@ import android.view.MotionEvent;
 import io.kimo.gameoflifeview.view.GameOfLifeView;
 
 /**
- *
+ * A base class of the Activities which show the GameOfLifeView that supports interaction.
  */
 
 public abstract class AbstractGameOfLifeActivity extends AppCompatActivity {
