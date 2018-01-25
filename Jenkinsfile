@@ -2,14 +2,23 @@
 
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '30', numToKeepStr: '15')), pipelineTriggers([])])
 
-node('gradle_18') {
+def runGradle(command) {
+  if (isUnix()) {
+    sh "./gradlew $command"
+  } else {
+    bat "gradlew.bat $command"
+  }
+}
+
+node('android') {
+
   stage ('Checkout') {
     checkout scm
   }
   stage ('Clean') {
-    bat 'gradlew.bat clean'
+    runGradle("clean")
   }
   stage ('Build') {
-    bat 'gradlew.bat build'
+    runGradle("build")
   }
 }

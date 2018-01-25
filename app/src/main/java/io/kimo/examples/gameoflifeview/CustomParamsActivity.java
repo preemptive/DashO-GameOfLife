@@ -1,13 +1,10 @@
 package io.kimo.examples.gameoflifeview;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
-import io.kimo.gameoflifeview.view.GameOfLifeView;
+import com.preemptive.dasho.example.gameoflife.AbstractGameOfLifeActivity;
 
-public class CustomParamsActivity extends AppCompatActivity {
-
-    private GameOfLifeView gameOfLifeView;
+public class CustomParamsActivity extends AbstractGameOfLifeActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,7 +13,7 @@ public class CustomParamsActivity extends AppCompatActivity {
         Utils.configureToolbar(this, true);
         setTitle("Custom Parameters");
 
-        gameOfLifeView = (GameOfLifeView) findViewById(R.id.game_of_life);
+        gameOfLifeView = findViewById(R.id.game_of_life);
     }
 
     @Override

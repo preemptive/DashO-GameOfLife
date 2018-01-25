@@ -10,3 +10,6 @@ local.properties
 # IntelliJ files
 .idea
 *.iml
+
+# Backup files
+*.bak*
