@@ -11,20 +11,9 @@ public class ThroughCodeActivity extends AbstractGameOfLifeActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        gameOfLifeView = new GameOfLifeView(this);
-        setContentView(gameOfLifeView);
+        GameOfLifeView golView = new GameOfLifeView(this);
+        setContentView(golView);
+        setupGameOfLife(golView);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        gameOfLifeView.start();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        gameOfLifeView.stop();
-    }
 }

@@ -9,6 +9,7 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.Display;
+import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.WindowManager;
 
@@ -21,7 +22,7 @@ import io.kimo.gameoflifeview.game.World;
  */
 public class GameOfLifeView extends SurfaceView implements Runnable {
 
-    public static final int DEFAULT_PROPORTION = 50;
+    public static final int DEFAULT_PROPORTION = 40;
     public static final int DEFAULT_ALIVE_COLOR = Color.BLACK;
     public static final int DEFAULT_DEAD_COLOR = Color.WHITE;
 
@@ -34,6 +35,8 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
     private int numberOfRows = 1;
 
     private World world;
+
+    private boolean allowInteraction;
 
     private int proportion = DEFAULT_PROPORTION;
     private int aliveColor = DEFAULT_ALIVE_COLOR;
@@ -62,6 +65,19 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
         calculateWorldParams();
     }
 
+    public void setAllowInteraction(boolean allowInteraction) {
+        this.allowInteraction = allowInteraction;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (allowInteraction) {
+            reviveCellsAt(event.getX(), event.getY());
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public void run() {
 
@@ -72,6 +88,14 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
             Canvas canvas = getHolder().lockCanvas();
             world.rotate();
             getHolder().unlockCanvasAndPost(drawCells(canvas));
+            try {
+                //Slow down the action so the changes can be seen.
+                synchronized (this) {
+                    wait(100);
+                }
+            } catch (InterruptedException e) {
+               //Ignored
+            }
         }
     }
 

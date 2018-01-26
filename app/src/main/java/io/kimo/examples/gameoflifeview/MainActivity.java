@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 switch (getLayoutPosition()) {
+                    default:
                     case DEFAULT_GOL_VIEW_CODE:
                         startActivity(new Intent(MainActivity.this, ThroughCodeActivity.class));
                         break;

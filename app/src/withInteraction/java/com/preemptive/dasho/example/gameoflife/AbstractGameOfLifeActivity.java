@@ -1,7 +1,8 @@
 package com.preemptive.dasho.example.gameoflife;
 
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MotionEvent;
+import android.widget.Toast;
 
 import io.kimo.gameoflifeview.view.GameOfLifeView;
 
@@ -11,13 +12,28 @@ import io.kimo.gameoflifeview.view.GameOfLifeView;
 
 public abstract class AbstractGameOfLifeActivity extends AppCompatActivity {
 
-    protected GameOfLifeView gameOfLifeView;
+    private GameOfLifeView gameOfLifeView;
+
+    protected void setupGameOfLife(GameOfLifeView view) {
+        gameOfLifeView = view;
+        gameOfLifeView.setAllowInteraction(true);
+    }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        if (gameOfLifeView != null) {
-            gameOfLifeView.reviveCellsAt(event.getX(), event.getY());
-        }
-        return super.onTouchEvent(event);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Toast.makeText(this, "Touch the screen to revive a cell", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        gameOfLifeView.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        gameOfLifeView.stop();
     }
 }
