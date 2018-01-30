@@ -2,10 +2,12 @@
 
 buildscript {
     repositories {
+        flatDir dirs: "${DashOHome}/gradle"
         jcenter()
         google()
     }
     dependencies {
+        classpath 'com.preemptive:dasho:3.0.+'
         classpath 'com.android.tools.build:gradle:3.0.1'
 
         // NOTE: Do not place your application dependencies here; they belong

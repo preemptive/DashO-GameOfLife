@@ -18,4 +18,4 @@ dependencies {
 }
 
 //Configures DashO to not obfuscate this project directly.
-//dashOConfig { disabledForBuildVariants = ['debug', 'release']}
+dashOConfig { disabledForBuildVariants = ['debug', 'release']}

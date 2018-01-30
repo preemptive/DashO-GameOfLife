@@ -4,9 +4,9 @@ properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKe
 
 def runGradle(command) {
   if (isUnix()) {
-    sh "./gradlew $command"
+    sh "./gradlew -PDashOHome='${env.DashOHome}' $command"
   } else {
-    bat "gradlew.bat $command"
+    bat "gradlew.bat -PDashOHome='${env.DashOHome}' $command"
   }
 }
 

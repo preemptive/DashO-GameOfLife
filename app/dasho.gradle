@@ -1,0 +1,4 @@
+dashOConfig {
+    dashOHome = "${DashOHome}"
+    includeAsInputs = [':library'] 
+}
