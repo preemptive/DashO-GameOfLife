@@ -19,9 +19,6 @@ def isReleaseBuild() {
 
 allprojects {
 
-    version = VERSION_NAME
-    group = GROUP
-
     repositories {
         jcenter()
         google()
@@ -29,3 +26,10 @@ allprojects {
 }
 
 apply plugin: 'android-reporting'
+
+
+task doAllTheThings(type: GradleBuild) {
+     tasks = ['clean', 'build', 'uninstallAll',
+              'installMenuWithInteractionDebug', 'installMenuWithoutInteractionDebug',
+              'installSingleWithInteractionDebug', 'installSingleWithoutInteractionDebug']
+}
