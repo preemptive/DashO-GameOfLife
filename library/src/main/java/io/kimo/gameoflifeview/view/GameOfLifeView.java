@@ -12,6 +12,8 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.WindowManager;
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 
 import io.kimo.gameoflifeview.R;
 import io.kimo.gameoflifeview.game.Cell;
@@ -120,16 +122,10 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
     }
 
     public void reviveCellsAt(float x, float y) {
-
-        int X = (int) (x/ proportion);
-        int Y = (int) (y/ proportion);
-
-        while(X >= world.getWidth())
-            X--;
-
-        while(Y >= world.getHeight())
-            Y--;
-
+        int X = (int)(x / proportion);
+        int Y = (int)(y / proportion);
+        X = min(max(0, X), world.getWidth()-1);
+        Y = min(max(0, Y), world.getHeight()-1);
         world.revive(X, Y);
     }
 
