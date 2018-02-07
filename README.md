@@ -68,14 +68,14 @@ When following the steps on the `master` branch, the following files were create
 * `app/singleWithoutInteraction.dox` - Created via the wizard for the `singleWithoutInteraction` product flavor.
 * `library/build.gradle` - Uncommented the `disabledForBuildVariants` line so DashO could obfuscate the library and application together.
 
-Some of these files were modified for this sample:
+Some of these files were further modified, on this branch, to make this sample more usable:
 
 * The default value for `sdk.dir` in the DashO configuration (`.dox`) files was replaced with `${ANDROID_SDK_ROOT}`.
 * The path to the DashO installation in `build.gradle` and `app\dasho.gradle` was replaced with a `${DashOHome}` property reference.
 
 ## Running the Application
 
-The script must be configured with location of the DashO installation so it find the plugin.
+The script must be configured with location of the DashO installation so it can find the plugin.
 Edit `gradle.properties` and set the path to your [DashO installation](https://www.preemptive.com/dasho/pro/userguide/en/getting_started_first.html#install_dir).
 
 ### Building
