@@ -97,6 +97,7 @@ Ultimately, it will only be used by the `menu` flavor builds.
 19. Go to the [`Removal` section](https://www.preemptive.com/dasho/pro/8.4/userguide/en/ui_advanced.html#removal_options) in the UI.
 20. Set `Unused Classes:` to `Remove` allowing DashO to remove more unused classes.
 21. Set `Unused Methods:` to `Remove` allowing Dasho to remove more unused methods.
+22. Save the project.
 
 The Gradle build environment has now been configured to use the DashO Gradle Plugin and a DashO project has been created which will work to obfuscate all four variants of this project.
 
@@ -121,8 +122,9 @@ This section shows how to set up configurations to better handle the `singleWith
 4. Check the `Create a flavor-specific project...` box to name the `.dox` file for this flavor specifically.
 5. Click `Finish`
 6. Repeat the `Removal` steps [19-21](#set_remove).
+7. Save the project.
 
-Repeat the above, but select `singleWithoutIteractionDebug` in step [8](#selectVariant). 
+Repeat the above steps, but select `singleWithoutIteractionDebug` in step [8](#selectVariant).
 
 You now have two flavor-specific projects and one default project.
 The flavor-specific projects reference the one Activity used by those flavors, while the default project references all four Activities used by the `menu` flavors.
