@@ -32,6 +32,7 @@ These instructions will demonstrate the last scenario, which provides the strong
 
 ## Prerequisites
 
+* [Java 8](http://www.oracle.com/technetwork/java/index.html)
 * [PreEmptive Protection - DashO v8.4.0](https://www.preemptive.com/products/dasho/downloads) (or later)
 * [Android Build Environment](https://developer.android.com/studio/index.html)
   * Platform v27
@@ -58,7 +59,7 @@ This sample uses a standard layout for an Android project.
 
 ## Setting up Obfuscation
 
-DashO's [New Project Wizard](https://www.preemptive.com/dasho/pro/userguide/en/getting_started_wizard.html#android) makes this project easy to set up.
+DashO's [New Project Wizard](https://www.preemptive.com/dasho/pro/8.4/userguide/en/getting_started_wizard.html#android) makes this project easy to set up.
 In this case, you will be setting up a single default project and two projects for specific product flavors.
 The library will be configured to be obfuscated as part of the main application.
 
@@ -70,7 +71,7 @@ Compile the application by running `gradlew clean assembleDebug`.  This will com
 
 ### The Default Project
 
-This will set up the main DashO configuration, which will be used by any flavors that don't have a custom DashO configuration of their own.
+This section shows how to set up the main DashO configuration, which will be used by any flavors that don't have a custom DashO configuration of their own.
 Ultimately, it will only be used by the `menu` flavor builds.
 
 <a name="wizard" />
@@ -87,33 +88,39 @@ Ultimately, it will only be used by the `menu` flavor builds.
 10. Verify the `Android SDK Home` was found.
 11. Verify `android-27` (or an appropriate value) is selected as the platform.
 12. Click `Next`. It will analyze the files and resources.
-13. This screen shows what classes were evaluated.
+13. This screen would allow you to add local `.jar` files to the project; not necessary in this case.
 14. Click `Next`.
 15. Four entry points will be selected.
 16. Click `Next`.
 17. Since this configuration won't be flavor-specific, leave the `Build Variant` boxes unchecked.
-18. Click `Finish`.
+18. Click `Finish`. <a name="set_remove"/>
+19. Go to the [`Removal` section](https://www.preemptive.com/dasho/pro/8.4/userguide/en/ui_advanced.html#removal_options) in the UI.
+20. Set `Unused Classes:` to `Remove` allowing DashO to remove more unused classes.
+21. Set `Unused Methods:` to `Remove` allowing Dasho to remove more unused methods.
 
-The Gradle build environment has been configured to use the DashO Gradle Plugin and a DashO project has been created which will work to obfuscate all four variants of this project.
+The Gradle build environment has now been configured to use the DashO Gradle Plugin and a DashO project has been created which will work to obfuscate all four variants of this project.
+
+>**Note:** The wizard creates a backup of any file it modifies.
 
 If you just re-build now, you would get an error on the library project because it does not have the configuration required by DashO.
 
 Edit `library/build.gradle` and uncomment the `dashOConfig` line.
-This will [configure](https://www.preemptive.com/dasho/pro/userguide/en/gradle/androidConf.html) DashO to not obfuscate the library.
-We will configure obfuscation for this library [below](#library).
+This will [configure](https://www.preemptive.com/dasho/pro/8.4/userguide/en/gradle/androidConf.html) DashO to not obfuscate the library.
+The library is configured for obfuscation [below](#library).
 
 ### The `singleWithInteraction` and `singleWithoutInteraction` Flavor Projects.
 
 The `single` flavor projects do not use all the Activities which are used by the `menu` flavors.
 If these builds used the default `project.dox`, created in the previous section, those Activities would remain in the application because they are referenced by that configuration.
 
-This will set up configurations to better handle the `singleWithInteraction` and `singleWithoutInteraction` flavors, by only referencing the one Activity used by those flavors.
+This section shows how to set up configurations to better handle the `singleWithInteraction` and `singleWithoutInteraction` flavors, by only referencing the one Activity used by those flavors.
 
 1. Run the wizard with the same steps [2-14](#wizard) used when creating the default project, but select `singleWithInteractionDebug` in step [8](#selectVariant).
 2. You should now see one entry point selected.
 3. Click `Next`.
-4. Check the `Create a flavor-specific project...` box.
+4. Check the `Create a flavor-specific project...` box to name the `.dox` file for this flavor specifically.
 5. Click `Finish`
+6. Repeat the `Removal` steps [19-21](#set_remove).
 
 Repeat the above, but select `singleWithoutIteractionDebug` in step [8](#selectVariant). 
 
@@ -133,16 +140,16 @@ The next section will walk through obfuscating the library.
 
 DashO can obfuscate libraries as standalone projects creating an obfuscated `.AAR` file.
 That approach, however, would require not renaming any class, method, or field used by any application that depends on the library.
-In this sample, the library will be obfuscated as part of main application, which allows DashO to rename much more of the library's code.
+In this sample, the library will be obfuscated as part of main application, which allows DashO to rename and remove many more of the library's classes, methods, and fields.
 
-In an earlier step, we turned off obfuscation of this library by uncommenting the `disabledForBuildVariants` line in `library/build.gradle`.
+In an earlier step, you turned off obfuscation of this library by uncommenting the `disabledForBuildVariants` line in `library/build.gradle`.
 To include the library in DashO's obfuscation:
 
 1.  Edit `app/dasho.gradle` and add `includeAsInputs = [':library']` inside the `dashOConfig` section.
 
-Since the application's layout files reference the `GameOfLifeView` view defined in the library, that view needs to be added as an entry point, so that DashO will not remove the methods used by the reference in the XML resources.
+Since the application's layout files reference the `GameOfLifeView` view defined in the library, that view needs to be added as an entry point, so that DashO will not remove or rename the methods used by the reference in the XML resources.
 
-1. Open `project.dox` in the DashO UI.
+1. Open `app/project.dox` in the DashO UI.
 2. Navigate to `Entry Points` and click `New Class`.
 3. Enter `io.kimo.gameoflifeview.view.GameOfLifeView` for the name of the class.
 4. Click `New Method`
@@ -164,18 +171,45 @@ Run `gradlew clean build` to compile and obfuscate all the variants.
 
 The four different variants can be simultaneously installed:
 
-* `gradlew installMenuWithInteractionDebug` - Installs `Game Of Life (Interactive)`
-* `gradlew installMenuWithoutInteractionDebug` - Installs `Game Of Life`
-* `gradlew installSingleWithInteractionDebug` - Installs `Game Of Life View (Interactive)`
-* `gradlew installSingleWithoutInteractionDebug` - Installs `Game Of Life View`
+* `gradlew installMenuWithInteractionDebug` - Installs _DashO MI Game Of Life_.
+* `gradlew installMenuWithoutInteractionDebug` - Installs _DashO MN Game Of Life_.
+* `gradlew installSingleWithInteractionDebug` - Installs _DashO SI Game Of Life_.
+* `gradlew installSingleWithoutInteractionDebug` - Installs _DashO SN Game Of Life_.
 
 ### Uninstalling
 
-You can uninstall all the variants by running `gradlew uninstallAll`
+You can uninstall all the variants by running `gradlew uninstallAll`.
 
 ### Everything at Once
 
-Run a custom task to just do all of it: `gradlew doAllTheThings`
+Run a custom task to just do all of it: `gradlew doAllTheThings`.
+
+## Verifying obfuscation
+
+You can validate the build is using the appropriate configurations and that it is obfuscating the application.
+
+### Reviewing DashO's Obfuscation
+
+The output from DashO will show how classes were renamed and what was removed.
+Review Dasho's report files  which will be in the `app/build/dasho-results` directory, under directories specific to the product flavor and build type (e.g. `app/build/dasho-results/menuWithInteraction/debug`).
+
+### Verify the Flavor-specific Configuration
+
+If you add `-DSHOW_DASHO_CMD` when building (e.g. `gradlew doAllTheThings -DSHOW_DASHO_CMD`), the information being passed to DashO will be printed to the console as the `transformClassesAndResourcesWithDashOFor...` tasks are run.
+This will include a `Running:` line where you can see the full arguments used to run DashO including which `.dox` configuration file is passed.
+
+### Verbose Output
+
+If you want to see more information on what DashO is doing, you can add `verbose = true` to the `dashOConfig` section of `app/dasho.gradle`.
+This will provide you with the verbose output from the obfuscation process.
+
+### Decompiling the APK
+
+To further investigate you can use the following tools to look at the final obfuscated apk:
+
+* [Apktool](https://ibotpeaches.github.io/Apktool/)
+* [dex2jar](https://github.com/pxb1988/dex2jar)
+* [Bytecode Viewer](https://bytecodeviewer.com/)
 
 ## Original Source
 

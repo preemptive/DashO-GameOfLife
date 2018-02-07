@@ -17,4 +17,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
+//Configures DashO to not obfuscate this project directly.
 //dashOConfig { disabledForBuildVariants = ['debug', 'release']}
