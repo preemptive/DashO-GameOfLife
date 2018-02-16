@@ -71,7 +71,7 @@ When following the steps on the `master` branch, the following files were create
 Some of these files were further modified, on this branch, to make this sample more usable:
 
 * The default value for `sdk.dir` in the DashO configuration (`.dox`) files was replaced with `${ANDROID_SDK_ROOT}`.
-* The path to the DashO installation in `build.gradle` and `app\dasho.gradle` was replaced with a `${DashOHome}` property reference.
+* The path to the DashO installation in `build.gradle` and `app\dasho.gradle` was replaced with a `${DASHO_HOME}` property reference.
 
 ## Running the Application
 
