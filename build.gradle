@@ -2,7 +2,7 @@
 
 buildscript {
     repositories {
-        flatDir dirs: "${DashOHome}/gradle"
+        flatDir dirs: "${DASHO_HOME}/gradle"
         jcenter()
         google()
     }
