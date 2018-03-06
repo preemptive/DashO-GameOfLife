@@ -24,7 +24,7 @@ There are different ways DashO could be set up to handle this project:
 
 * Obfuscate the library and the application independently.
 * Obfuscate both together using a single DashO configuration.
-* Ofuscate both together but with variant-specific DashO configurations.
+* Obfuscate both together but with variant-specific DashO configurations.
 
 These instructions will demonstrate the last scenario, which provides the strongest protection.
 
@@ -38,8 +38,8 @@ These instructions will demonstrate the last scenario, which provides the strong
   * Platform v27
   * Build Tools v27.0.3
 
->**Note:** The Android-specific requirements can be changed by editing the `build.gradle` files
-  
+>**Note:** The Android-specific requirements can be changed by editing the `build.gradle` files.
+
 ## Code Layout
 
 This sample uses a standard layout for an Android project.
@@ -48,9 +48,9 @@ This sample uses a standard layout for an Android project.
 * `app` - The application project.
 * `app/src/main` - The majority of the application source.
 * `app/src/menu` - The `AndroidManifest.xml` for the `main` flavor.
-* `app/src/menuWithInteraction` -  Resources for this flavor's application name.
+* `app/src/menuWithInteraction` - Resources for this flavor's application name.
 * `app/src/menuWithoutInteraction` - Resources for this flavor's application name.
-* `app/src/single` -  The `AndroidManifest.xml` for the `single` flavor.
+* `app/src/single` - The `AndroidManifest.xml` for the `single` flavor.
 * `app/src/singleWithInteraction` - Resources for this flavor's application name.
 * `app/src/singleWithoutInteraction` - Resources for this flavor's application name.
 * `app/src/withInteraction` - Code which sets up user interaction with the `GameOfLifeView`.
@@ -67,7 +67,8 @@ The library will be configured to be obfuscated as part of the main application.
 
 ### Initial Compile
 
-Compile the application by running `gradlew clean assembleDebug`.  This will compile all the debug Build Variants.
+Compile the application by running `gradlew clean assembleDebug`.
+This will compile all the debug Build Variants.
 
 ### The Default Project
 
@@ -83,7 +84,7 @@ Ultimately, it will only be used by the `menu` flavor builds.
 5. Click `Next`.
 6. Keep `Gradle` as the build environment.
 7. Browse to this project and select the `app` directory or `app/build.gradle` file. <a name="selectVariant"/>
-8. Select the `menuWithInteractionDebug` Build Variant.  The `menu` flavor builds use all the Actvities and Views which the `single` flavor builds use, so it can be used to create a default project.
+8. Select the `menuWithInteractionDebug` Build Variant. The `menu` flavor builds use all the Activities and Views which the `single` flavor builds use, so it can be used to create a default project.
 9. Click `Next`.
 10. Verify the `Android SDK Home` was found.
 11. Verify `android-27` (or an appropriate value) is selected as the platform.
@@ -96,7 +97,7 @@ Ultimately, it will only be used by the `menu` flavor builds.
 18. Click `Finish`. <a name="set_remove"/>
 19. Go to the [`Removal` section](https://www.preemptive.com/dasho/pro/8.4/userguide/en/ui_advanced.html#removal_options) in the UI.
 20. Set `Unused Classes:` to `Remove` allowing DashO to remove more unused classes.
-21. Set `Unused Methods:` to `Remove` allowing Dasho to remove more unused methods.
+21. Set `Unused Methods:` to `Remove` allowing DashO to remove more unused methods.
 22. Save the project.
 
 The Gradle build environment has now been configured to use the DashO Gradle Plugin and a DashO project has been created which will work to obfuscate all four variants of this project.
@@ -147,7 +148,7 @@ In this sample, the library will be obfuscated as part of main application, whic
 In an earlier step, you turned off obfuscation of this library by uncommenting the `disabledForBuildVariants` line in `library/build.gradle`.
 To include the library in DashO's obfuscation:
 
-1.  Edit `app/dasho.gradle` and add `includeAsInputs = [':library']` inside the `dashOConfig` section.
+1. Edit `app/dasho.gradle` and add `includeAsInputs = [':library']` inside the `dashOConfig` section.
 
 Since the application's layout files reference the `GameOfLifeView` view defined in the library, that view needs to be added as an entry point, so that DashO will not remove or rename the methods used by the reference in the XML resources.
 
@@ -193,7 +194,7 @@ You can validate the build is using the appropriate configurations and that it i
 ### Reviewing DashO's Obfuscation
 
 The output from DashO will show how classes were renamed and what was removed.
-Review Dasho's report files  which will be in the `app/build/dasho-results` directory, under directories specific to the product flavor and build type (e.g. `app/build/dasho-results/menuWithInteraction/debug`).
+Review DashO's report files which will be in the `app/build/dasho-results` directory, under directories specific to the product flavor and build type (e.g. `app/build/dasho-results/menuWithInteraction/debug`).
 
 ### Verify the Flavor-specific Configuration
 
@@ -207,7 +208,7 @@ This will provide you with the verbose output from the obfuscation process.
 
 ### Decompiling the APK
 
-To further investigate you can use the following tools to look at the final obfuscated apk:
+To further investigate you can use the following tools to look at the final obfuscated APK:
 
 * [Apktool](https://ibotpeaches.github.io/Apktool/)
 * [dex2jar](https://github.com/pxb1988/dex2jar)
