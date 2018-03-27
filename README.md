@@ -1,6 +1,6 @@
 # DashO-GameOfLife
 
->A sample Android app that demonstrates using _PreEmptive Protection - DashO_ with libraries and product flavors
+A sample Android app that demonstrates using [PreEmptive Protection - DashO](https://www.preemptive.com/products/dasho/overview) with libraries and product flavors.
 
 This sample is a [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) simulation application that uses a library, both built in the same project.
 The application has two flavor dimensions (`view` and `interactive`) which [combine](https://developer.android.com/studio/build/build-variants.html#flavor-dimensions) four product flavors (`menu`, `single`, `withInteraction`, and `withoutInteraction`).
@@ -213,6 +213,12 @@ To further investigate you can use the following tools to look at the final obfu
 * [Apktool](https://ibotpeaches.github.io/Apktool/)
 * [dex2jar](https://github.com/pxb1988/dex2jar)
 * [Bytecode Viewer](https://bytecodeviewer.com/)
+
+## About DashO
+
+_PreEmptive Protection - DashO_ is a [Java and Android obfuscator](https://www.preemptive.com/products/dasho/) and application hardening solution from [PreEmptive Solutions](https://www.preemptive.com/).
+DashO's obfuscation, hardening, and runtime check features make your application much harder to reverse engineer, pirate, or steal data from.
+World-class technical support for DashO is available through our [website](https://www.preemptive.com/support/dasho-support) and/or our [support request form](https://www.preemptive.com/contact/supportrequestform).
 
 ## Original Source
 
