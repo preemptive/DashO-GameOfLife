@@ -247,9 +247,7 @@
     <includenonclassfiles>
         <copy source="${AndroidManifestFile}" relativedest="${AndroidManifestOutput}"/>
     </includenonclassfiles>
-    <injection>
-        <instrumentation option="off">
-            <runtime target="android4"/>
-        </instrumentation>
+    <injection option="off">
+        <runtime target="android"/>
     </injection>
 </dasho>
