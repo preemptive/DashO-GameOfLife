@@ -22,9 +22,9 @@ The `single` flavors only use the library's code directly.
 
 There are different ways DashO could be set up to handle this project:
 
-* Obfuscate the library and the application independently.
-* Obfuscate both together using a single DashO configuration.
-* Ofuscate both together but with variant-specific DashO configurations.
+* Protect the library and the application independently.
+* Protect both together using a single DashO configuration.
+* Protect both together but with variant-specific DashO configurations.
 
 The instructions on the `master` branch demonstrate the last scenario, which provides the strongest protection.
 
@@ -37,7 +37,7 @@ The instructions on the `master` branch demonstrate the last scenario, which pro
   * Build Tools v27.0.3
 
 >**Note:** The Android-specific requirements can be changed by editing the `build.gradle` files
-  
+
 ## Code Layout
 
 This sample uses a standard layout for an Android project.
@@ -55,32 +55,32 @@ This sample uses a standard layout for an Android project.
 * `app/src/withoutInteraction` - Code which does not allow user interaction with the `GameOfLifeView`.
 
 
-## Setting up Obfuscation
+## Setting up Protection
 
 This branch already contains the DashO configuration.
 When following the steps on the `master` branch, the following files were created and/or modified:
 
 * `build.gradle` - The DashO Gradle plugin was added to the build script.
 * `app/build.gradle` - Applied `dasho.gradle` to the build script.
-* `app/dasho.gradle` - Created via the wizard to hold the DashO Gradle plugins's configuration.
+* `app/dasho.gradle` - Created via the wizard to hold the DashO Gradle plugin's configuration.
 * `app/project.dox` - Created via the wizard as the default project.
 * `app/singleWithInteraction.dox` - Created via the wizard for the `singleWithInteraction` product flavor.
 * `app/singleWithoutInteraction.dox` - Created via the wizard for the `singleWithoutInteraction` product flavor.
-* `library/build.gradle` - Uncommented the `disabledForBuildVariants` line so DashO could obfuscate the library and application together.
 
 Some of these files were further modified, on this branch, to make this sample more usable:
 
 * The default value for `sdk.dir` in the DashO configuration (`.dox`) files was replaced with `${ANDROID_SDK_ROOT}`.
 * The path to the DashO installation in `build.gradle` and `app\dasho.gradle` was replaced with a `${DASHO_HOME}` property reference.
 
-## Running the Application
+>**Note:**
+>`DASHO_HOME` must be configured with location of the DashO installation so the script can find the plugin.
+>Edit `gradle.properties` and set it with the path to your [DashO installation](https://www.preemptive.com/dasho/pro/userguide/en/getting_started_first.html#install_dir).
 
-The script must be configured with location of the DashO installation so it can find the plugin.
-Edit `gradle.properties` and set the path to your [DashO installation](https://www.preemptive.com/dasho/pro/userguide/en/getting_started_first.html#install_dir).
+## Running the Application
 
 ### Building
 
-Run `gradlew clean build` to compile and obfuscate all the variants.
+Run `gradlew clean build` to compile and protect all the variants.
 
 ### Installing
 
@@ -99,11 +99,11 @@ You can uninstall all the variants by running `gradlew uninstallAll`.
 
 Run a custom task to just do all of it: `gradlew doAllTheThings`.
 
-## Verifying obfuscation
+## Verifying Protection
 
-You can validate the build is using the appropriate configurations and that it is obfuscating the application.
+You can validate the build is using the appropriate configurations and that it is protecting the application.
 
-### Reviewing DashO's Obfuscation
+### Reviewing DashO's Protection
 
 The output from DashO will show how classes were renamed and what was removed.
 Review Dasho's report files  which will be in the `app/build/dasho-results` directory, under directories specific to the product flavor and build type (e.g. `app/build/dasho-results/menuWithInteraction/debug`).
@@ -116,11 +116,11 @@ This will include a `Running:` line where you can see the full arguments used to
 ### Verbose Output
 
 If you want to see more information on what DashO is doing, you can add `verbose = true` to the `dashOConfig` section of `app/dasho.gradle`.
-This will provide you with the verbose output from the obfuscation process.
+This will provide you with the verbose output from the protection process.
 
 ### Decompiling the APK
 
-To further investigate you can use the following tools to look at the final obfuscated apk:
+To further investigate you can use the following tools to look at the final protected apk:
 
 * [Apktool](https://ibotpeaches.github.io/Apktool/)
 * [dex2jar](https://github.com/pxb1988/dex2jar)
