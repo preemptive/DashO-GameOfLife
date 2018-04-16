@@ -22,18 +22,18 @@ The `single` flavors only use the library's code directly.
 
 There are different ways DashO could be set up to handle this project:
 
-* Obfuscate the library and the application independently.
-* Obfuscate both together using a single DashO configuration.
-* Obfuscate both together but with variant-specific DashO configurations.
+* Protect the library and the application independently.
+* Protect both together using a single DashO configuration.
+* Protect both together but with variant-specific DashO configurations.
 
 These instructions will demonstrate the last scenario, which provides the strongest protection.
 
->**Note:** DashO can obfuscate both `debug` and `release` builds, but this sample will be using `debug` builds so a signing key does not have to be generated and configured.
+>**Note:** DashO can protect both `debug` and `release` builds, but this sample will be using `debug` builds so a signing key does not have to be generated and configured.
 
 ## Prerequisites
 
 * [Java 8](http://www.oracle.com/technetwork/java/index.html)
-* [PreEmptive Protection - DashO v8.4.0](https://www.preemptive.com/products/dasho/downloads) (or later)
+* [PreEmptive Protection - DashO v8.5.0](https://www.preemptive.com/products/dasho/downloads) (or later)
 * [Android Build Environment](https://developer.android.com/studio/index.html)
   * Platform v27
   * Build Tools v27.0.3
@@ -57,13 +57,13 @@ This sample uses a standard layout for an Android project.
 * `app/src/withoutInteraction` - Code which does not allow user interaction with the `GameOfLifeView`.
 
 
-## Setting up Obfuscation
+## Setting up Protection
 
 DashO's [New Project Wizard](https://www.preemptive.com/dasho/pro/8.4/userguide/en/getting_started_wizard.html#android) makes this project easy to set up.
 In this case, you will be setting up a single default project and two projects for specific product flavors.
-The library will be configured to be obfuscated as part of the main application.
+The library will be configured to be protected as part of the main application.
 
->**Note:** You can preview the final DashO configuration by switching to the `obfuscated` branch. 
+>**Note:** You can preview the final DashO configuration by switching to the `obfuscated` branch.
 
 ### Initial Compile
 
@@ -100,15 +100,9 @@ Ultimately, it will only be used by the `menu` flavor builds.
 21. Set `Unused Methods:` to `Remove` allowing DashO to remove more unused methods.
 22. Save the project.
 
-The Gradle build environment has now been configured to use the DashO Gradle Plugin and a DashO project has been created which will work to obfuscate all four variants of this project.
+The Gradle build environment has now been configured to use the DashO Gradle Plugin and a DashO project has been created which will work to protect all four variants of this project.
 
 >**Note:** The wizard creates a backup of any file it modifies.
-
-If you just re-build now, you would get an error on the library project because it does not have the configuration required by DashO.
-
-Edit `library/build.gradle` and uncomment the `dashOConfig` line.
-This will [configure](https://www.preemptive.com/dasho/pro/8.4/userguide/en/gradle/androidConf.html) DashO to not obfuscate the library.
-The library is configured for obfuscation [below](#library).
 
 ### The `singleWithInteraction` and `singleWithoutInteraction` Flavor Projects.
 
@@ -130,23 +124,22 @@ Repeat the above steps, but select `singleWithoutIteractionDebug` in step [8](#s
 You now have two flavor-specific projects and one default project.
 The flavor-specific projects reference the one Activity used by those flavors, while the default project references all four Activities used by the `menu` flavors.
 
-Since this sample works with `debug` builds, edit `app/dasho.gradle` and remove the line about `disabledForBuildVariants` so DashO will obfuscate the `debug` builds.
+Since this sample works with `debug` builds, edit `app/dasho.gradle` and add `android.buildTypes.debug.minifyEnabled true` at the bottom so DashO will protect the `debug` builds.
 
 When you build (`gradlew clean build`), the `single` flavors will not retain those extra classes, while the `menu` flavors still have all four.
 
-However, the library is still not being obfuscated.
-The next section will walk through obfuscating the library.
+However, the library is still not being protected.
+The next section will walk through protecting the library.
 
 <a name="library"/>
 
 ### The `library` Project
 
-DashO can obfuscate libraries as standalone projects creating an obfuscated `.AAR` file.
+DashO can protect libraries as standalone projects creating a protected `.AAR` file.
 That approach, however, would require not renaming any class, method, or field used by any application that depends on the library.
-In this sample, the library will be obfuscated as part of main application, which allows DashO to rename and remove many more of the library's classes, methods, and fields.
+In this sample, the library will be protected as part of main application, which allows DashO to rename and remove many more of the library's classes, methods, and fields.
 
-In an earlier step, you turned off obfuscation of this library by uncommenting the `disabledForBuildVariants` line in `library/build.gradle`.
-To include the library in DashO's obfuscation:
+To include the library when DashO protects the application:
 
 1. Edit `app/dasho.gradle` and add `includeAsInputs = [':library']` inside the `dashOConfig` section.
 
@@ -162,13 +155,13 @@ Since the application's layout files reference the `GameOfLifeView` view defined
 
 >**Note:** The `single` flavor projects do not need this change because those variants use the view directly and do not reference it via an XML layout, so DashO will discover that code automatically.
 
-When you build (`gradlew clean build`), the library is now obfuscated as part of each build variant of the application.
+When you build (`gradlew clean build`), the library is now protected as part of each build variant of the application.
 
 ## Running the Application
 
 ### Building
 
-Run `gradlew clean build` to compile and obfuscate all the variants.
+Run `gradlew clean build` to compile and protect all the variants.
 
 ### Installing
 
@@ -187,11 +180,11 @@ You can uninstall all the variants by running `gradlew uninstallAll`.
 
 Run a custom task to just do all of it: `gradlew doAllTheThings`.
 
-## Verifying obfuscation
+## Verifying Protection
 
-You can validate the build is using the appropriate configurations and that it is obfuscating the application.
+You can validate the build is using the appropriate configurations and that it is protecting the application.
 
-### Reviewing DashO's Obfuscation
+### Reviewing DashO's Protection
 
 The output from DashO will show how classes were renamed and what was removed.
 Review DashO's report files which will be in the `app/build/dasho-results` directory, under directories specific to the product flavor and build type (e.g. `app/build/dasho-results/menuWithInteraction/debug`).
@@ -204,11 +197,11 @@ This will include a `Running:` line where you can see the full arguments used to
 ### Verbose Output
 
 If you want to see more information on what DashO is doing, you can add `verbose = true` to the `dashOConfig` section of `app/dasho.gradle`.
-This will provide you with the verbose output from the obfuscation process.
+This will provide you with the verbose output from the protection process.
 
 ### Decompiling the APK
 
-To further investigate you can use the following tools to look at the final obfuscated APK:
+To further investigate you can use the following tools to look at the final protected APK:
 
 * [Apktool](https://ibotpeaches.github.io/Apktool/)
 * [dex2jar](https://github.com/pxb1988/dex2jar)
