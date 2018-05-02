@@ -59,7 +59,7 @@ This sample uses a standard layout for an Android project.
 
 ## Setting up Protection
 
-DashO's [New Project Wizard](https://www.preemptive.com/dasho/pro/8.4/userguide/en/getting_started_wizard.html#android) makes this project easy to set up.
+DashO's [New Project Wizard](https://www.preemptive.com/dasho/pro/userguide/en/getting_started_wizard.html#android) makes this project easy to set up.
 In this case, you will be setting up a single default project and two projects for specific product flavors.
 The library will be configured to be protected as part of the main application.
 
@@ -95,7 +95,7 @@ Ultimately, it will only be used by the `menu` flavor builds.
 16. Click `Next`.
 17. Since this configuration won't be flavor-specific, leave the `Build Variant` boxes unchecked.
 18. Click `Finish`. <a name="set_remove"/>
-19. Go to the [`Removal` section](https://www.preemptive.com/dasho/pro/8.4/userguide/en/ui_advanced.html#removal_options) in the UI.
+19. Go to the [`Removal` section](https://www.preemptive.com/dasho/pro/userguide/en/ui_removal.html#options) in the UI.
 20. Set `Unused Classes:` to `Remove` allowing DashO to remove more unused classes.
 21. Set `Unused Methods:` to `Remove` allowing DashO to remove more unused methods.
 22. Save the project.
