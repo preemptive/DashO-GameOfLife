@@ -33,10 +33,10 @@ These instructions will demonstrate the last scenario, which provides the strong
 ## Prerequisites
 
 * [Java 8](http://www.oracle.com/technetwork/java/index.html)
-* [PreEmptive Protection - DashO v8.5.0](https://www.preemptive.com/products/dasho/downloads) (or later)
+* [PreEmptive Protection - DashO v9.0.0](https://www.preemptive.com/products/dasho/downloads) (or later)
 * [Android Build Environment](https://developer.android.com/studio/index.html)
   * Platform v27
-  * Build Tools v27.0.3
+  * Build Tools v28.0.2
 
 >**Note:** The Android-specific requirements can be changed by editing the `build.gradle` files.
 
@@ -78,7 +78,7 @@ Ultimately, it will only be used by the `menu` flavor builds.
 <a name="wizard" />
 
 1. Launch _PreEmptive Protection - DashO_. (Register if necessary)
-2. If it is not already showing, start the New Project Wizard (**File > New Project > Wizard**).
+2. If it is not already showing, start the New Project Wizard (**File > Project Wizard**).
 3. Click `Next`.
 4. Select `An Android application or library`.
 5. Click `Next`.
