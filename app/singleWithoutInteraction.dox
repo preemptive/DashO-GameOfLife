@@ -29,6 +29,10 @@
     <inputpath>
         <pathelement location="${gradleInput}"/>
     </inputpath>
+    <globalProcessingExclude>
+        <classes regex="true" name="(?!com\.preemptive\.dasho\.example\.gameoflife\.single\.noninteractive\.).*\.R"/>
+        <classes regex="true" name="(?!com\.preemptive\.dasho\.example\.gameoflife\.single\.noninteractive\.).*\.R\$.*"/>
+    </globalProcessingExclude>
     <classpath appendrtjar="false">
         <pathelement location="${sdk.dir}/platforms/${sdk.target}/android.jar"/>
         <pathelement location="${gradleSupport:-}"/>
@@ -43,191 +47,11 @@
     <removal classes="unused" members="unused">
         <debug/>
         <attributes/>
-        <excludelist>
-            <classes name="android.support.v7.appcompat.R">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.v7.appcompat.R$*">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.fragment.R">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.fragment.R$*">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.compat.R">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.compat.R$*">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.coreui.R">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.coreui.R$*">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.graphics.drawable.R">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.graphics.drawable.R$*">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="io.kimo.examples.gameoflifeview.R">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="io.kimo.examples.gameoflifeview.R$*">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.coreutils.R">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.coreutils.R$*">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.v7.recyclerview.R">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.v7.recyclerview.R$*">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="io.kimo.gameoflifeview.R">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="io.kimo.gameoflifeview.R$*">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.graphics.drawable.animated.R">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.graphics.drawable.animated.R$*">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.arch.lifecycle.R">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.arch.lifecycle.R$*">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-        </excludelist>
     </removal>
     <methodCallRemoval/>
     <renaming option="on">
         <class-options randomize="true" prefix="${manifest.package}."/>
         <member-options randomize="true"/>
-        <excludelist>
-            <classes name="android.support.v7.appcompat.R">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.v7.appcompat.R$*">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.fragment.R">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.fragment.R$*">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.compat.R">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.compat.R$*">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.coreui.R">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.coreui.R$*">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.graphics.drawable.R">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.graphics.drawable.R$*">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="io.kimo.examples.gameoflifeview.R">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="io.kimo.examples.gameoflifeview.R$*">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.coreutils.R">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.coreutils.R$*">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.v7.recyclerview.R">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.v7.recyclerview.R$*">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="io.kimo.gameoflifeview.R">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="io.kimo.gameoflifeview.R$*">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.graphics.drawable.animated.R">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.support.graphics.drawable.animated.R$*">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.arch.lifecycle.R">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-            <classes name="android.arch.lifecycle.R$*">
-                <field name="**"/>
-                <method name="**" signature="**"/>
-            </classes>
-        </excludelist>
         <mapping>
             <mapreport path="${dasho.results.dir}/${projectname}-mapreport.txt"/>
             <mapoutput overwrite="true" path="${dasho.results.dir}/${projectname}.map"/>
