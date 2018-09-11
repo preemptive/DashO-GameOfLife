@@ -33,7 +33,7 @@ The instructions on the `master` branch demonstrate the last scenario, which pro
 * [Java 8](http://www.oracle.com/technetwork/java/index.html)
 * [PreEmptive Protection - DashO v9.0.0](https://www.preemptive.com/products/dasho/downloads) (or later)
 * [Android Build Environment](https://developer.android.com/studio/index.html)
-  * Platform v27
+  * Platform v28
   * Build Tools v28.0.2
 
 >**Note:** The Android-specific requirements can be changed by editing the `build.gradle` files
