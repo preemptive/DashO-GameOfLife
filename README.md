@@ -35,7 +35,7 @@ These instructions will demonstrate the last scenario, which provides the strong
 * [Java 8](http://www.oracle.com/technetwork/java/index.html)
 * [PreEmptive Protection - DashO v9.0.0](https://www.preemptive.com/products/dasho/downloads) (or later)
 * [Android Build Environment](https://developer.android.com/studio/index.html)
-  * Platform v27
+  * Platform v28
   * Build Tools v28.0.2
 
 >**Note:** The Android-specific requirements can be changed by editing the `build.gradle` files.
@@ -87,7 +87,7 @@ Ultimately, it will only be used by the `menu` flavor builds.
 8. Select the `menuWithInteractionDebug` Build Variant. The `menu` flavor builds use all the Activities and Views which the `single` flavor builds use, so it can be used to create a default project.
 9. Click `Next`.
 10. Verify the `Android SDK Home` was found.
-11. Verify `android-27` (or an appropriate value) is selected as the platform.
+11. Verify `android-28` (or an appropriate value) is selected as the platform.
 12. Click `Next`. It will analyze the files and resources.
 13. This screen would allow you to add local `.jar` files to the project; not necessary in this case.
 14. Click `Next`.
