@@ -13,7 +13,7 @@
         <property name="KEY_ALIAS_PASSWORD" value="${key.alias.password:-android}"/>
         <property name="sdk.target" value="android-27"/>
         <property name="buildType" value="singleWithInteraction/debug"/>
-        <property name="gradleInput" value="build/intermediates/classes/${buildVariant}"/>
+        <property name="gradleInput" value="build/intermediates/javac/singleWithInteractionDebug/compileSingleWithInteractionDebugJavaWithJavac/classes/"/>
         <property name="KEYSTORE" value="${key.store}"/>
         <property name="build.dir" value="build"/>
         <property name="sdk.dir" value="${ANDROID_SDK_ROOT}"/>
