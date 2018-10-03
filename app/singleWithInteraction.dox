@@ -18,7 +18,7 @@
         <property name="build.dir" value="build"/>
         <property name="sdk.dir" value="${ANDROID_SDK_ROOT}"/>
         <property name="gradleSupport" value=""/>
-        <property name="AndroidManifestOutput" value="../../../intermediates/dasho-manifests"/>
+        <property name="AndroidManifestOutput" value="../../../../intermediates/dasho-manifests"/>
         <property name="buildVariant" value="${buildType:-}"/>
     </propertylist>
     <global>
