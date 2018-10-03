@@ -98,7 +98,10 @@ Ultimately, it will only be used by the `menu` flavor builds.
 19. Go to the [`Removal` section](https://www.preemptive.com/dasho/pro/userguide/en/ui_removal.html#options) in the UI.
 20. Set `Unused Classes:` to `Remove` allowing DashO to remove more unused classes.
 21. Set `Unused Methods:` to `Remove` allowing DashO to remove more unused methods.
-22. Save the project.
+22. Go to the [`Entry Points -> Special Classes` section](https://www.preemptive.com/dasho/pro/userguide/en/ui_entry.html#special_classes) in the UI.
+23. Open the properties of `CustomParamsActivity`, `ThroughCodeActivity`, and `ThroughXMLActivity` and check `Rename Class`.
+    This improves the strength of protection as it will rename these classes and their entries in the manifest.
+24. Save the project.
 
 The Gradle build environment has now been configured to use the DashO Gradle Plugin and a DashO project has been created which will work to protect all four variants of this project.
 
