@@ -33,10 +33,9 @@ These instructions will demonstrate the last scenario, which provides the strong
 ## Prerequisites
 
 * [Java 8](http://www.oracle.com/technetwork/java/index.html)
-* [PreEmptive Protection - DashO v9.0.0](https://www.preemptive.com/products/dasho/downloads) (or later)
+* [PreEmptive Protection - DashO v9.1.0](https://www.preemptive.com/products/dasho/downloads) (or later)
 * [Android Build Environment](https://developer.android.com/studio/index.html)
   * Platform v28
-  * Build Tools v28.0.2
 
 >**Note:** The Android-specific requirements can be changed by editing the `build.gradle` files.
 
@@ -127,7 +126,7 @@ Repeat the above steps, but select `singleWithoutIteractionDebug` in step [8](#s
 You now have two flavor-specific projects and one default project.
 The flavor-specific projects reference the one Activity used by those flavors, while the default project references all four Activities used by the `menu` flavors.
 
-Since this sample works with `debug` builds, edit `app/dasho.gradle` and add `android.buildTypes.debug.minifyEnabled true` at the bottom so DashO will protect the `debug` builds.
+Since this sample works with `debug` builds, edit `app/dasho.gradle` and add `android{buildTypes{debug{minifyEnabled true}}}` at the bottom so DashO will protect the `debug` builds.
 
 When you build (`gradlew clean build`), the `single` flavors will not retain those extra classes, while the `menu` flavors still have all four.
 
@@ -151,10 +150,12 @@ Since the application's layout files reference the `GameOfLifeView` view defined
 1. Open `app/project.dox` in the DashO UI.
 2. Navigate to `Entry Points` and click `New Class`.
 3. Enter `io.kimo.gameoflifeview.view.GameOfLifeView` for the name of the class.
-4. Click `New Method`
-5. Enter `<init>` as the name of the method.
-6. Enter `**` as the signature for the method.
-7. Save the project.
+4. Click `OK`.
+5. Click `New Method`.
+6. Enter `<init>` as the name of the method.
+7. Enter `**` as the signature for the method.
+8. Click `OK`.
+9. Save the project.
 
 >**Note:** The `single` flavor projects do not need this change because those variants use the view directly and do not reference it via an XML layout, so DashO will discover that code automatically.
 
