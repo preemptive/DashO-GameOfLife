@@ -73,11 +73,17 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        performClick();
         if (allowInteraction) {
             reviveCellsAt(event.getX(), event.getY());
             return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean performClick() {
+        return super.performClick();
     }
 
     @Override
