@@ -31,7 +31,7 @@ The instructions on the `master` branch demonstrate the last scenario, which pro
 ## Prerequisites
 
 * [Java 8](http://www.oracle.com/technetwork/java/index.html)
-* [PreEmptive Protection - DashO v9.1.1](https://www.preemptive.com/products/dasho/downloads) (or later)
+* [PreEmptive Protection - DashO v9.2.0](https://www.preemptive.com/products/dasho/downloads) (or later)
 * [Android Build Environment](https://developer.android.com/studio/index.html)
   * Platform v28
 
