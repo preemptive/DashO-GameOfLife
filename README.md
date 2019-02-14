@@ -105,7 +105,7 @@ You can validate the build is using the appropriate configurations and that it i
 ### Reviewing DashO's Protection
 
 The output from DashO will show how classes were renamed and what was removed.
-Review Dasho's report files  which will be in the `app/build/dasho-results` directory, under directories specific to the product flavor and build type (e.g. `app/build/dasho-results/menuWithInteraction/debug`).
+Review DashO's report files  which will be in the `app/build/dasho-results` directory, under directories specific to the product flavor and build type (e.g. `app/build/dasho-results/menuWithInteraction/debug`).
 
 ### Verify the Flavor-specific Configuration
 
@@ -119,7 +119,7 @@ This will provide you with the verbose output from the protection process.
 
 ### Decompiling the APK
 
-To further investigate you can use the following tools to look at the final protected apk:
+To further investigate you can use the following tools to look at the final protected APK:
 
 * [Apktool](https://ibotpeaches.github.io/Apktool/)
 * [dex2jar](https://github.com/pxb1988/dex2jar)
@@ -137,7 +137,7 @@ This sample is based on [GameOfLifeView](https://github.com/thiagokimo/GameOfLif
 
 ## License
 
-    Copyright 2018 PreEmptive Solutions, LLC.
+    Copyright 2019 PreEmptive Solutions, LLC.
 
     Copyright 2011, 2012 Thiago Rocha
 
