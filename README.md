@@ -35,7 +35,7 @@ The instructions on the `master` branch demonstrate the last scenario, which pro
 * [Android Build Environment](https://developer.android.com/studio/index.html)
   * Platform v28
 
->**Note:** The Android-specific requirements can be changed by editing the `build.gradle` files
+>**Note:** The Android-specific requirements can be changed by editing the `build.gradle` files.
 
 ## Code Layout
 
@@ -45,9 +45,9 @@ This sample uses a standard layout for an Android project.
 * `app` - The application project.
 * `app/src/main` - The majority of the application source.
 * `app/src/menu` - The `AndroidManifest.xml` for the `main` flavor.
-* `app/src/menuWithInteraction` -  Resources for this flavor's application name.
+* `app/src/menuWithInteraction` - Resources for this flavor's application name.
 * `app/src/menuWithoutInteraction` - Resources for this flavor's application name.
-* `app/src/single` -  The `AndroidManifest.xml` for the `single` flavor.
+* `app/src/single` - The `AndroidManifest.xml` for the `single` flavor.
 * `app/src/singleWithInteraction` - Resources for this flavor's application name.
 * `app/src/singleWithoutInteraction` - Resources for this flavor's application name.
 * `app/src/withInteraction` - Code which sets up user interaction with the `GameOfLifeView`.
@@ -105,7 +105,7 @@ You can validate the build is using the appropriate configurations and that it i
 ### Reviewing DashO's Protection
 
 The output from DashO will show how classes were renamed and what was removed.
-Review DashO's report files  which will be in the `app/build/dasho-results` directory, under directories specific to the product flavor and build type (e.g. `app/build/dasho-results/menuWithInteraction/debug`).
+Review DashO's report files which will be in the `app/build/dasho-results` directory, under directories specific to the product flavor and build type (e.g. `app/build/dasho-results/menuWithInteraction/debug`).
 
 ### Verify the Flavor-specific Configuration
 
