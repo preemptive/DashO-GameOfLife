@@ -107,6 +107,10 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
         }
     }
 
+    public void nukeWorld() {
+        world.nuke();
+    }
+
     public void start() {
         thread = null;
         isRunning = true;

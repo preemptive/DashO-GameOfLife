@@ -58,6 +58,19 @@ public class World {
         return this.board[i][j];
     }
 
+    public void nuke() {
+        for(int i = 0; i < this.width; i++) {
+            for (int j = 0; j < this.height; j++) {
+                kill(i, j);
+            }
+        }
+        if (width > 5 && height > 5) {
+            revive( 3, 3);
+            revive( 2, 3);
+            revive( 4, 3);
+        }
+    }
+
     public void kill(int i, int j) {
         this.board[i][j].die();
     }
