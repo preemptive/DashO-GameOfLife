@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.preemptive.dasho.android'
 
 android {
     compileSdkVersion 28

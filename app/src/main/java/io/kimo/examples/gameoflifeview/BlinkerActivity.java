@@ -6,15 +6,12 @@ import com.preemptive.dasho.example.gameoflife.AbstractGameOfLifeActivity;
 
 import io.kimo.gameoflifeview.view.GameOfLifeView;
 
-public class ThroughCodeActivity extends AbstractGameOfLifeActivity {
-    protected GameOfLifeView golView;
+public class BlinkerActivity extends ThroughCodeActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        golView = new GameOfLifeView(this);
-        setContentView(golView);
-        setupGameOfLife(golView);
+        golView.setupBlinkers();
     }
 
 }

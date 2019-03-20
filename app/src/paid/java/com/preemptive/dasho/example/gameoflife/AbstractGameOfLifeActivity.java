@@ -13,10 +13,23 @@ import io.kimo.gameoflifeview.view.GameOfLifeView;
 public abstract class AbstractGameOfLifeActivity extends AppCompatActivity {
 
     private GameOfLifeView gameOfLifeView;
+    private Boolean locked;
 
     protected void setupGameOfLife(GameOfLifeView view) {
         gameOfLifeView = view;
-        gameOfLifeView.setAllowInteraction(true);
+        checkTheLock();
+        gameOfLifeView.setAllowInteraction(!locked);
+    }
+
+    private void checkTheLock() {
+        if (locked == null) {
+            locked = false;
+            return;
+        }
+    }
+
+    private void setLocked(boolean b) {
+        locked = b;
     }
 
     @Override
@@ -28,6 +41,9 @@ public abstract class AbstractGameOfLifeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        if (locked) {
+            gameOfLifeView.setupBlinkers();
+        }
         gameOfLifeView.start();
     }
 

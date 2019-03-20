@@ -107,8 +107,8 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
         }
     }
 
-    public void nukeWorld() {
-        world.nuke();
+    public void setupBlinkers() {
+        world.setupBlinkers();
     }
 
     public void start() {

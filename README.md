@@ -5,16 +5,16 @@ A sample Android app that demonstrates using [PreEmptive Protection - DashO](htt
 This sample is a [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) simulation application that uses a library, both built in the same project.
 The application has two flavor dimensions (`view` and `monetization`) which [combine](https://developer.android.com/studio/build/build-variants.html#flavor-dimensions) four product flavors (`menu`, `single`, `free`, and `paid`).
 
-The `view` dimension determines if the application launches a `menu` with a list of three views or just launches a `single` view.
+The `view` dimension determines if the application launches a `menu` with a list of two views or just launches a `single` view.
 
 The `monetization` dimension determines if the user can give life to a cell.
 
 This ultimately creates four applications:
 
-|             |                      `paid`                           |                         `free`                            |
-|-------------|-------------------------------------------------------|-----------------------------------------------------------|
-|**`menu`**   | `menuPaid` - Shows a menu of three interactive views. | `menuFree` - Shows a menu of three non-interactive views. |
-|**`single`** | `singlePaid` - Shows a single interactive view.       | `singleFree` - Shows a single non-interactive view.       |
+|             |                      `paid`                         |                         `free`                          |
+|-------------|-----------------------------------------------------|---------------------------------------------------------|
+|**`menu`**   | `menuPaid` - Shows a menu of two interactive views. | `menuFree` - Shows a menu of two non-interactive views. |
+|**`single`** | `singlePaid` - Shows a single interactive view.     | `singleFree` - Shows a single non-interactive view.     |
 
 The library is used by all four applications.
 The `menu` flavors use the library's code directly and reference the library's `GameOfLifeView` class via XML.
@@ -41,12 +41,12 @@ This sample uses a standard layout for an Android project.
 * `app/src/main` - The majority of the application source.
 * `app/src/free` - Code which does not allow user interaction with the `GameOfLifeView`.
 * `app/src/paid` - Code which allows user interaction with the `GameOfLifeView`.
-* `app/src/menu` - The `AndroidManifest.xml` for the `main` flavor.
-* `app/src/single` - The `AndroidManifest.xml` for the `single` flavor.
-* `app/src/menuFree` - Resources for this flavor's application name.
-* `app/src/menuPaid` - Resources for this flavor's application name.
-* `app/src/singleFree` - Resources for this flavor's application name.
-* `app/src/singlePaid` - Resources for this flavor's application name.
+* `app/src/menu` - The `AndroidManifest.xml` for all `menu` flavors.
+* `app/src/single` - The `AndroidManifest.xml` for all `single` flavors.
+* `app/src/menuFree` - Resources for the `menuFree` flavor.
+* `app/src/menuPaid` - Resources for the `menuPaid` flavor.
+* `app/src/singleFree` - Resources for the `singleFree` flavor.
+* `app/src/singlePaid` - Resources for the `singlePaid` flavor.
 
 ## Setting up Protection
 
@@ -55,18 +55,23 @@ When following the steps on the `master` branch, the following files were create
 
 * `build.gradle` - The DashO Android Gradle plugin was added to the build script.
 * `app/build.gradle` - Applied the `com.preemptive.dasho.android` plugin.
-* `app/free.dox` - Created to configure the protection of the `free` build variants.
-* `app/paid.dox` -  Created to configure the protection of the `paid` build variants.
+* `app/free.dox` - Created to configure the protection of the `free` variants.
+* `app/project.dox` -  Created to configure the protection of the `paid` variants.
 
 >**Note:**
->`DASHO_HOME` must be configured with location of the DashO Home so the plugin can run DashO.
+>`DASHO_HOME` must be configured with location of the [DashO Home](https://www.preemptive.com/dasho/pro/10.0/userguide/en/install_installation.html#dasho-home) so the plugin can run DashO.
 >Edit `gradle.properties` and set it appropriately.
 
 ## Running the Application
 
+![Screenshot](screenshot.png)
+
+The first two screens are the starting pages for the `menu` and `single` variants.
+The last screen shows what to expect when running a `free` variant on an emulator.
+
 ### Building
 
-Run `gradlew clean build` to compile and protect all the variants.
+Run `gradlew clean assembleRelease` to compile and protect all the release variants.
 
 ### Installing
 
@@ -100,7 +105,7 @@ This will include a `Running:` line where you can see the full arguments used to
 
 ### Verbose Output
 
-If you want to see more information on what DashO is doing, you can add `verbose true` to the `dashO` section of `app/dasho.gradle`.
+If you want to see more information on what DashO is doing, you can add a `dasho` closure to `app/build.gradle` and [configure](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_config.html#dasho_closure_properties) `verbose true`.
 This will provide you with the verbose output from the protection process.
 
 ### Decompiling the APK
