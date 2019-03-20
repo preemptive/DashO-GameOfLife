@@ -29,7 +29,7 @@ apply plugin: 'android-reporting'
 
 
 task doAllTheThings(type: GradleBuild) {
-     tasks = ['clean', 'build', 'uninstallAll',
+     tasks = ['clean', 'uninstallAll',
               'installMenuPaidRelease', 'installMenuFreeRelease',
               'installSinglePaidRelease', 'installSingleFreeRelease']
 }

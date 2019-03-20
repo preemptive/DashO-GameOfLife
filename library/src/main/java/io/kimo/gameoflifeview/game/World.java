@@ -58,16 +58,24 @@ public class World {
         return this.board[i][j];
     }
 
-    public void nuke() {
+    public void setupBlinkers() {
         for(int i = 0; i < this.width; i++) {
             for (int j = 0; j < this.height; j++) {
                 kill(i, j);
             }
         }
-        if (width > 5 && height > 5) {
-            revive( 3, 3);
-            revive( 2, 3);
-            revive( 4, 3);
+        int count = 0;
+        for (int i = 2; i < this.width - 1; i += 4) {
+            for (int j = 2; j < this.height - 1; j += 4) {
+                revive(i, j);
+                if (count++ % 2 == 0) {
+                    revive(i - 1, j);
+                    revive(i + 1, j);
+                } else {
+                    revive(i, j - 1);
+                    revive(i, j + 1);
+                }
+            }
         }
     }
 

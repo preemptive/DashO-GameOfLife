@@ -22,11 +22,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="io.kimo.examples.gameoflifeview.MainActivity"/>
         </activity>
-        <activity android:name="io.kimo.examples.gameoflifeview.ThroughXMLActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="io.kimo.examples.gameoflifeview.MainActivity"/>
-        </activity>
         <activity android:name="io.kimo.examples.gameoflifeview.CustomParamsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

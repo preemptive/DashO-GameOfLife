@@ -16,22 +16,22 @@ public abstract class AbstractGameOfLifeActivity extends AppCompatActivity {
 
     private long lastToastTime = 0;
     private static final long MIN_TIME_BETWEEN_TOASTS = 3000;
-    private Boolean emulator;
+    private Boolean locked;
 
     protected void setupGameOfLife(GameOfLifeView view) {
         this.gameOfLifeView = view;
-        checkEmulator();
+        checkTheLock();
     }
 
-    private void checkEmulator() {
-        if (emulator == null) {
-            emulator = false;
-            return;
+    private boolean checkTheLock() {
+        if (locked == null) {
+            locked = false;
         }
+        return locked;
     }
 
-    private void setEmulator(boolean b) {
-        emulator = b;
+    private void setLocked(boolean b) {
+        locked = b;
     }
 
 
@@ -40,7 +40,10 @@ public abstract class AbstractGameOfLifeActivity extends AppCompatActivity {
         long time = System.currentTimeMillis();
         if ((time - lastToastTime) > MIN_TIME_BETWEEN_TOASTS) {
             lastToastTime = time;
-            Toast.makeText(this, emulator ? "The free version is not supported on emulators." : "Upgrade now!! Use the paid version to interact.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, locked ?
+                    "Please upgrade now. Emulators are not supported with the free version."
+                    : "Please upgrade now. The paid version allows you to interact.",
+                    Toast.LENGTH_SHORT).show();
             return true;
         }
         return false;
@@ -49,8 +52,8 @@ public abstract class AbstractGameOfLifeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (emulator) {
-            gameOfLifeView.nukeWorld();
+        if (locked) {
+            gameOfLifeView.setupBlinkers();
         }
         gameOfLifeView.start();
     }
