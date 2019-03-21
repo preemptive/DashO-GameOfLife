@@ -9,7 +9,6 @@
         <seOutput path="dasho-maps/${buildVariant}-se.map"/>
     </stringencrypt>
     <injection>
-        <runtime target="android"/>
         <checks>
             <emulatorCheck action="setLocked()">
                 <locations>
