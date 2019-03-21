@@ -1,10 +1,7 @@
-package io.kimo.examples.gameoflifeview;
+package com.preemptive.dasho.example.gameoflife;
 
 import android.os.Bundle;
-
-import com.preemptive.dasho.example.gameoflife.AbstractGameOfLifeActivity;
-
-import io.kimo.gameoflifeview.view.GameOfLifeView;
+import io.kimo.examples.gameoflifeview.ThroughCodeActivity;
 
 public class BlinkerActivity extends ThroughCodeActivity {
 

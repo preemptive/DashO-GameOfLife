@@ -73,7 +73,7 @@ In `build.gradle` add the following to the `repositories` section which is insid
 
 In `build.gradle` add the following to the `dependencies` section which is inside `buildscript`:
 
-`classpath 'com.preemptive.dasho:dasho-android:1.0.+'`
+`classpath 'com.preemptive.dasho:dasho-android:0.9.+'`
 
 ### Applying the DashO Android Gradle Plugin
 
@@ -137,6 +137,14 @@ If the application is run on an emulator, the view will only show blinkers.
 6. Set the `Action` to `setLocked()` and click `OK`.
 
 ## Running the Application
+
+Because of the Emulator Check, the application will respond differently based on where it is run.
+
+|             |                   Paid Variants                       |                                  Free Variants                                 |
+|-------------|-------------------------------------------------------|--------------------------------------------------------------------------------|
+|**Device**   | Interactive views. Clicking a cell brings it to life. | Non-interactive views. Clicking tells user to "upgrade".                       |
+|**Emulator** | Interactive views. Clicking a cell brings it to life. | Non-interactive views with blinker patterns. Clicking tells user to "upgrade". |
+
 
 ![Screenshot](screenshot.png)
 
