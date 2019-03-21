@@ -107,34 +107,37 @@ That will generate an [Android Mode](https://www.preemptive.com/dasho/pro/10.0/u
 Since this demo will a different configuration for the `free` variants we need two different configuration files.
 
 These two configurations will start with the same information.
-In this example, we are excluding Android's classes from DashO's protection in order to reduce clutter in the User Interface.
+We are excluding Android's classes as they are not relevant to this sample.
 
-1. Launch the DashO GUI and open `app/project.dox`.
-2. If it prompts you to run a build:
+1. Launch the DashO GUI (if not already opened).
+2. Open `app/project.dox`.
+3. If it prompts you to run a build:
     1. Click `OK`.
     2. Run `gradlew clean assembleSinglePaidRelease` from the command line.
     3. Refresh when prompted.
-3. Go to `Global Exclude` in the GUI.
-4. Click `New Class`
-5. Type `android*.**` for the `name` and click OK.
-6. Choose `Save As` from the `File` menu and create `free.dox`.
-   This file will be used by the `free` variants.
-7. Run a build, `gradlew clean assembleRelease`, using this new configuration.
+4. Go to `Global Exclude` in the GUI.
+5. Click `New Class`
+6. Type `android*.**` for the `name` and click OK.
+7. Save the file.
 
 #### Configuring the 'free' Variants.
 
 To further encourage users to "buy" the `paid` version, an Emulator Check will be added to the `free` variants.
 If the application is run on an emulator, the view will only show blinkers.
 
-1. Launch the DashO GUI and open `app/free.dox`.
-2. If it prompts you to run a build:
+1. Copy `app/project.dox` to `app/free.dox`.
+   This file will be used by the `free` variants.
+2. Launch the DashO GUI (if not already opened).
+3. Open `app/free.dox`.
+4. If it prompts you to run a build:
     1. Click `OK`.
     2. Run `gradlew clean assembleSingleFreeRelease` from the command line.
     3. Refresh when prompted.
-3. Go to `Checks->Emulator` in the GUI.
-4. Click `Add` and choose `Emulator Check`
-5. In the locations, check `onCreate(android.os.Bundle)` under `AbstractGameOfLifeActivity`.
-6. Set the `Action` to `setLocked()` and click `OK`.
+5. Go to `Checks->Emulator` in the GUI.
+6. Click `Add` and choose `Emulator Check`
+7. In the locations, check `checkTheLock()` under `AbstractGameOfLifeActivity`.
+8. Set the `Action` to `setLocked()` and click `OK`.
+9. Save the file.
 
 ## Running the Application
 
