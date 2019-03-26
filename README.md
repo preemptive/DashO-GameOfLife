@@ -1,15 +1,16 @@
 # DashO-GameOfLife
 
-A sample Android app that demonstrates using [PreEmptive Protection - DashO](https://www.preemptive.com/products/dasho/overview) with libraries and product flavors.
+A sample Android app that demonstrates using [PreEmptive Protection - DashO](https://www.preemptive.com/products/dasho/overview) with the [DashO Android Gradle Plugin](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html) on an application with libraries and product flavors.
 
-This sample is a [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) simulation application that uses a library, both built in the same project.
-The application has two flavor dimensions (`view` and `monetization`) which [combine](https://developer.android.com/studio/build/build-variants.html#flavor-dimensions) four product flavors (`menu`, `single`, `free`, and `paid`).
+This sample is a [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) simulation application.
+This project consists of the app itself and a library that it uses.
 
+The application has two flavor dimensions: `view` and `monetization`.
 The `view` dimension determines if the application launches a `menu` with a list of two views or just launches a `single` view.
+The `monetization` dimension determines whether the application is interactive (`paid`) or non-interactive (`free`).
+This interaction allows the user to give life to a cell by tapping.
 
-The `monetization` dimension determines if the user can give life to a cell.
-
-This ultimately creates four applications:
+These dimensions are ultimately [combined](https://developer.android.com/studio/build/build-variants.html#flavor-dimensions) to create four applications:
 
 |             |                      `paid`                         |                         `free`                          |
 |-------------|-----------------------------------------------------|---------------------------------------------------------|
@@ -30,7 +31,7 @@ The instructions on the `master` branch demonstrate protecting the `release` bui
   * Platform v28
   * Android Gradle Plugin v3.1.0 (or later)
 
->**Note:** The Android-specific requirements can be changed by editing the `build.gradle` files.
+>**Note:** The Android-specific settings can be changed by editing the `build.gradle` files.
 
 ## Code Layout
 
@@ -63,6 +64,14 @@ When following the steps on the `master` branch, the following files were create
 >Edit `gradle.properties` and set it appropriately.
 
 ## Running the Application
+
+Because of the Emulator Check, the application will respond differently based on where it is run.
+
+|             |                   Paid Variants                      |                                 Free Variants                                 |
+|-------------|------------------------------------------------------|-------------------------------------------------------------------------------|
+|**Device**   | Interactive views. Tapping a cell brings it to life. | Non-interactive views. Tapping tells user to "upgrade".                       |
+|**Emulator** | Interactive views. Tapping a cell brings it to life. | Non-interactive views with blinker patterns. Tapping tells user to "upgrade". |
+
 
 ![Screenshot](screenshot.png)
 
@@ -105,7 +114,7 @@ This will include a `Running:` line where you can see the full arguments used to
 
 ### Verbose Output
 
-If you want to see more information on what DashO is doing, you can add a `dasho` closure to `app/build.gradle` and [configure](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_config.html#dasho_closure_properties) `verbose true`.
+If you want to see more information on what DashO is doing, you can add a `dasho` closure to `app/build.gradle` and [configure](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_config.html#dasho) `verbose true`.
 This will provide you with the verbose output from the protection process.
 
 ### Decompiling the APK
