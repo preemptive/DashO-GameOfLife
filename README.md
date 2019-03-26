@@ -1,15 +1,16 @@
 # DashO-GameOfLife
 
-A sample Android app that demonstrates using [PreEmptive Protection - DashO](https://www.preemptive.com/products/dasho/overview) with libraries and product flavors.
+A sample Android app that demonstrates using [PreEmptive Protection - DashO](https://www.preemptive.com/products/dasho/overview) with the [DashO Android Gradle Plugin](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html) on an application with libraries and product flavors.
 
-This sample is a [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) simulation application that uses a library, both built in the same project.
-The application has two flavor dimensions (`view` and `monetization`) which [combine](https://developer.android.com/studio/build/build-variants.html#flavor-dimensions) four product flavors (`menu`, `single`, `free`, and `paid`).
+This sample is a [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) simulation application.
+This project consists of the app itself and a library that it uses.
 
+The application has two flavor dimensions: `view` and `monetization`.
 The `view` dimension determines if the application launches a `menu` with a list of two views or just launches a `single` view.
+The `monetization` dimension determines whether the application is interactive (`paid`) or non-interactive (`free`).
+This interaction allows the user to give life to a cell by tapping.
 
-The `monetization` dimension determines if the user can give life to a cell.
-
-This ultimately creates four applications:
+These dimensions are ultimately [combined](https://developer.android.com/studio/build/build-variants.html#flavor-dimensions) to create four applications:
 
 |             |                      `paid`                         |                         `free`                          |
 |-------------|-----------------------------------------------------|---------------------------------------------------------|
@@ -34,7 +35,7 @@ These instructions will demonstrate protecting the application with variant-spec
   * Platform v28
   * Android Gradle Plugin v3.1.0 (or later)
 
->**Note:** The Android-specific requirements can be changed by editing the `build.gradle` files.
+>**Note:** The Android-specific settings can be changed by editing the `build.gradle` files.
 
 ## Code Layout
 
@@ -57,13 +58,13 @@ This sample uses a standard layout for an Android project.
 
 Setting up protection involves five steps:
 
-1. Configuring the plugin's location.
-2. Applying the [DashO Android Gradle Plugin](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html).
+1. Configuring the [DashO Android Gradle Plugin's](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html) location.
+2. Applying the plugin.
 3. Configuring [DashO Home](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_dasho_home.html).
 4. Generating a configuration file.
 5. Customizing the configuration.
 
-### Configuring the Plugin's Location
+### Configuring the DashO Android Gradle Plugin's Location
 
 The Gradle build script needs to be able to find the [DashO Android Gradle Plugin](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html).
 
@@ -75,7 +76,7 @@ In `build.gradle` add the following to the `dependencies` section which is insid
 
 `classpath 'com.preemptive.dasho:dasho-android:0.9.+'`
 
-### Applying the DashO Android Gradle Plugin
+### Applying the Plugin
 
 Applying the plugin will incorporate DashO into the build process.
 
@@ -87,7 +88,7 @@ In `app/build.gradle` add the following after `apply plugin: 'com.android.applic
 
 The plugin needs to know where DashO is located so it can protect the code.
 
-Edit `gradle.properties` and set `DASHO_HOME` to the [appropriate location](https://www.preemptive.com/dasho/pro/10.0/userguide/en/install_installation.html#dasho-home).
+Edit `gradle.properties` to uncomment and set `DASHO_HOME` to the [appropriate location](https://www.preemptive.com/dasho/pro/10.0/userguide/en/install_installation.html#dasho-home).
 
 >**Note:**<br/>
 >There are [other ways](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_dasho_home.html) to configure `DASHO_HOME`.
@@ -104,7 +105,8 @@ That will generate an [Android Mode](https://www.preemptive.com/dasho/pro/10.0/u
 
 ### Customizing the Configuration
 
-Since this demo will a different configuration for the `free` variants we need two different configuration files.
+Since this sample demonstrates product flavor support, we need two different configuration files.
+One to handle the `free` variants and one for the `paid` variants.
 
 These two configurations will start with the same information.
 We are excluding Android's classes as they are not relevant to this sample.
@@ -114,16 +116,16 @@ We are excluding Android's classes as they are not relevant to this sample.
 3. If it prompts you to run a build:
     1. Click `OK`.
     2. Run `gradlew clean assembleSinglePaidRelease` from the command line.
-    3. Refresh when prompted.
+    3. Click the refresh button once it is highlighted.
 4. Go to `Global Exclude` in the GUI.
 5. Click `New Class`
 6. Type `android*.**` for the `name` and click OK.
 7. Save the file.
 
-#### Configuring the 'free' Variants.
+#### Configuring the 'free' Variants
 
 To further encourage users to "buy" the `paid` version, an Emulator Check will be added to the `free` variants.
-If the application is run on an emulator, the view will only show blinkers.
+If the application is run on an emulator, the entire view will be covered by oscillating [blinkers](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Examples_of_patterns).
 
 1. Copy `app/project.dox` to `app/free.dox`.
    This file will be used by the `free` variants.
@@ -132,10 +134,10 @@ If the application is run on an emulator, the view will only show blinkers.
 4. If it prompts you to run a build:
     1. Click `OK`.
     2. Run `gradlew clean assembleSingleFreeRelease` from the command line.
-    3. Refresh when prompted.
+    3. Click the refresh button once it is highlighted.
 5. Go to `Checks->Emulator` in the GUI.
 6. Click `Add` and choose `Emulator Check`
-7. In the locations, check `checkTheLock()` under `AbstractGameOfLifeActivity`.
+7. Under `Locations`, check `checkTheLock()` under `AbstractGameOfLifeActivity`.
 8. Set the `Action` to `setLocked()` and click `OK`.
 9. Save the file.
 
@@ -143,10 +145,10 @@ If the application is run on an emulator, the view will only show blinkers.
 
 Because of the Emulator Check, the application will respond differently based on where it is run.
 
-|             |                   Paid Variants                       |                                  Free Variants                                 |
-|-------------|-------------------------------------------------------|--------------------------------------------------------------------------------|
-|**Device**   | Interactive views. Clicking a cell brings it to life. | Non-interactive views. Clicking tells user to "upgrade".                       |
-|**Emulator** | Interactive views. Clicking a cell brings it to life. | Non-interactive views with blinker patterns. Clicking tells user to "upgrade". |
+|             |                   Paid Variants                      |                                 Free Variants                                 |
+|-------------|------------------------------------------------------|-------------------------------------------------------------------------------|
+|**Device**   | Interactive views. Tapping a cell brings it to life. | Non-interactive views. Tapping tells user to "upgrade".                       |
+|**Emulator** | Interactive views. Tapping a cell brings it to life. | Non-interactive views with blinker patterns. Tapping tells user to "upgrade". |
 
 
 ![Screenshot](screenshot.png)
@@ -190,7 +192,7 @@ This will include a `Running:` line where you can see the full arguments used to
 
 ### Verbose Output
 
-If you want to see more information on what DashO is doing, you can add a `dasho` closure to `app/build.gradle` and [configure](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_config.html#dasho_closure_properties) `verbose true`.
+If you want to see more information on what DashO is doing, you can add a `dasho` closure to `app/build.gradle` and [configure](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_config.html#dasho) `verbose true`.
 This will provide you with the verbose output from the protection process.
 
 ### Decompiling the APK
