@@ -21,7 +21,7 @@ The library is used by all four applications.
 The `menu` flavors use the library's code directly and reference the library's `GameOfLifeView` class via XML.
 The `single` flavors only use the library's code directly.
 
-The instructions on the `master` branch demonstrate protecting the `release` builds with variant-specific configurations.
+The instructions on the `master-vNext` branch demonstrate protecting the `release` builds with variant-specific configurations.
 
 ## Prerequisites
 
@@ -52,7 +52,7 @@ This sample uses a standard layout for an Android project.
 ## Setting up Protection
 
 This branch already contains the DashO configuration.
-When following the steps on the `master` branch, the following files were created and/or modified:
+When following the steps on the `master-vNext` branch, the following files were created and/or modified:
 
 * `build.gradle` - The DashO Android Gradle plugin was added to the build script.
 * `app/build.gradle` - Applied the `com.preemptive.dasho.android` plugin.
