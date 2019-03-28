@@ -64,6 +64,8 @@ Setting up protection involves five steps:
 4. Generating a configuration file.
 5. Customizing the configuration.
 
+>**Note:** You can preview the final configuration by switching to the `obfuscated-vNext` branch.
+
 ### Configuring the DashO Android Gradle Plugin's Location
 
 The Gradle build script needs to be able to find the [DashO Android Gradle Plugin](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html).
