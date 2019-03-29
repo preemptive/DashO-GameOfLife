@@ -4,7 +4,7 @@ buildscript {
     repositories {
         jcenter()
         google()
-        maven { url "https://maven.preemptive.com" }
+        maven { url 'https://maven.preemptive.com' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.2'
