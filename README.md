@@ -25,7 +25,7 @@ These instructions will demonstrate protecting the application with variant-spec
 
 >**Note:** DashO can protect both `debug` and `release` builds.
 >This sample will be protecting `release` builds.
->`Debug` builds can be protected by [configuring](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_config.html) `enabledBuildVariants`.
+>`Debug` builds can be protected by [configuring](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_config.html#dasho) `enabledBuildVariants`.
 
 ## Prerequisites
 
