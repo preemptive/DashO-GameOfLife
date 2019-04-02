@@ -60,8 +60,8 @@ When following the steps on the `master-vNext` branch, the following files were 
 * `app/project.dox` -  Created to configure the protection of the `paid` variants.
 
 >**Note:**
->`DASHO_HOME` must be configured with location of the [DashO Home](https://www.preemptive.com/dasho/pro/10.0/userguide/en/install_installation.html#dasho-home) so the plugin can run DashO.
->Edit `gradle.properties` and set it appropriately.
+>The plugin should find DashO automatically if DashO is installed in the default location.
+>If not, there are multiple ways to [configure DashO Home](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_dasho_home.html).
 
 ## Running the Application
 
