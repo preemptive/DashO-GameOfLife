@@ -76,7 +76,7 @@ In `build.gradle` add the following to the `repositories` section which is insid
 
 In `build.gradle` add the following to the `dependencies` section which is inside `buildscript`:
 
-`classpath 'com.preemptive.dasho:dasho-android:0.9.+'`
+`classpath 'com.preemptive.dasho:dasho-android:1.0.+'`
 
 ### Applying the Plugin
 
@@ -88,12 +88,10 @@ In `app/build.gradle` add the following after `apply plugin: 'com.android.applic
 
 ### Configuring DashO Home
 
-The plugin needs to know where DashO is located so it can protect the code.
+The plugin needs to know where DashO is [installed](https://www.preemptive.com/dasho/pro/10.0/userguide/en/install_installation.html#dasho-home) so it can protect the code.
 
-Edit `gradle.properties` to uncomment and set `DASHO_HOME` to the [appropriate location](https://www.preemptive.com/dasho/pro/10.0/userguide/en/install_installation.html#dasho-home).
-
->**Note:**<br/>
->There are [other ways](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_dasho_home.html) to configure `DASHO_HOME`.
+The plugin should find it automatically if DashO is installed in the default location.
+If not, there are multiple ways to [configure DashO Home](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_dasho_home.html).
 
 ### Generating a Configuration File
 
