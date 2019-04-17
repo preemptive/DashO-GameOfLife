@@ -1,7 +1,7 @@
 package com.preemptive.dasho.example.gameoflife;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Toast;
 
 import io.kimo.gameoflifeview.view.GameOfLifeView;

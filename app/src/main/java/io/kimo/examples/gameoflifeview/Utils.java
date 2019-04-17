@@ -1,7 +1,7 @@
 package io.kimo.examples.gameoflifeview;
 
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 class Utils {
 
