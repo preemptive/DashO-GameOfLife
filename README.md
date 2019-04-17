@@ -72,7 +72,6 @@ Because of the Emulator Check, the application will respond differently based on
 |**Device**   | Interactive views. Tapping a cell brings it to life. | Non-interactive views. Tapping tells user to "upgrade".                       |
 |**Emulator** | Interactive views. Tapping a cell brings it to life. | Non-interactive views with blinker patterns. Tapping tells user to "upgrade". |
 
-
 ![Screenshot](screenshot.png)
 
 The first two screens are the starting pages for the `menu` and `single` variants.
