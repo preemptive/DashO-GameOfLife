@@ -29,7 +29,6 @@ The instructions on the `master-vNext` branch demonstrate protecting the `releas
 * [PreEmptive Protection - DashO v10.0.0](https://www.preemptive.com/products/dasho/downloads) (or later)
 * [Android Build Environment](https://developer.android.com/studio/index.html)
   * Platform v28
-  * Android Gradle Plugin v3.1.0 (or later)
 
 >**Note:** The Android-specific settings can be changed by editing the `build.gradle` files.
 
@@ -55,7 +54,7 @@ This branch already contains the DashO configuration.
 When following the steps on the `master-vNext` branch, the following files were created and/or modified:
 
 * `build.gradle` - The DashO Android Gradle plugin was added to the build script.
-* `app/build.gradle` - Applied the `com.preemptive.dasho.android` plugin.
+* `app/build.gradle` - Applied the `com.preemptive.dasho.android` plugin, enabled R8 with `minifyEnabled`, and enabled R8's optimization using `proguardFiles`.
 * `app/free.dox` - Created to configure the protection of the `free` variants.
 * `app/project.dox` -  Created to configure the protection of the `paid` variants.
 

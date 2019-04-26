@@ -16,3 +16,6 @@ local.properties
 
 # Ignore the cache directory
 /app/.dasho/
+
+# Ignore String Encryption maps
+/app/dasho-maps/
