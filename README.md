@@ -33,7 +33,6 @@ These instructions will demonstrate protecting the application with variant-spec
 * [PreEmptive Protection - DashO v10.0.0](https://www.preemptive.com/products/dasho/downloads) (or later)
 * [Android Build Environment](https://developer.android.com/studio/index.html)
   * Platform v28
-  * Android Gradle Plugin v3.1.0 (or later)
 
 >**Note:** The Android-specific settings can be changed by editing the `build.gradle` files.
 
@@ -56,17 +55,31 @@ This sample uses a standard layout for an Android project.
 
 ## Setting up Protection
 
-Setting up protection involves five steps:
+Setting up protection involves the following steps:
 
-1. Configuring the [DashO Android Gradle Plugin's](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html) location.
-2. Applying the plugin.
-3. Configuring [DashO Home](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_dasho_home.html).
-4. Generating a configuration file.
-5. Customizing the configuration.
+1. Enable and configure R8.
+2. Configure the [DashO Android Gradle Plugin's](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html) location.
+3. Apply the plugin.
+4. Configure [DashO Home](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_dasho_home.html) (if needed).
+5. Generate a configuration file.
+6. Customize the configuration.
 
 >**Note:** You can preview the final configuration by switching to the `obfuscated-vNext` branch.
 
-### Configuring the DashO Android Gradle Plugin's Location
+### Enable and Configure R8
+
+The DashO Android Gradle Plugin relies on R8 to perform renaming and removal, so it is important that you enable it.
+
+In `app/build.gradle`, add the following inside the `android { buildTypes { release { } } }` block:
+
+```
+minifyEnabled true
+proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+```
+
+This will enable R8 with default settings, including optimization.
+
+### Configure the DashO Android Gradle Plugin's Location
 
 The Gradle build script needs to be able to find the [DashO Android Gradle Plugin](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html).
 
@@ -76,9 +89,9 @@ In `build.gradle` add the following to the `repositories` section which is insid
 
 In `build.gradle` add the following to the `dependencies` section which is inside `buildscript`:
 
-`classpath 'com.preemptive.dasho:dasho-android:1.0.+'`
+`classpath 'com.preemptive.dasho:dasho-android:0.10.+'`
 
-### Applying the Plugin
+### Apply the Plugin
 
 Applying the plugin will incorporate DashO into the build process.
 
@@ -86,14 +99,14 @@ In `app/build.gradle` add the following after `apply plugin: 'com.android.applic
 
 `apply plugin: 'com.preemptive.dasho.android'`
 
-### Configuring DashO Home
+### Configure DashO Home (If Needed)
 
 The plugin needs to know where DashO is [installed](https://www.preemptive.com/dasho/pro/10.0/userguide/en/install_installation.html#dasho-home) so it can protect the code.
 
 The plugin should find it automatically if DashO is installed in the default location.
 If not, there are multiple ways to [configure DashO Home](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_dasho_home.html).
 
-### Generating a Configuration File
+### Generate a Configuration File
 
 The basic configuration can be generated during the build.
 
@@ -103,7 +116,7 @@ Run the following command:
 
 That will generate an [Android Mode](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_android_mode.html) `project.dox` file in the `app` directory.
 
-### Customizing the Configuration
+### Customize the Configuration
 
 Since this sample demonstrates product flavor support, we need two different configuration files.
 One to handle the `free` variants and one for the `paid` variants.
