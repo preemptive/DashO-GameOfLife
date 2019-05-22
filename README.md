@@ -1,6 +1,6 @@
 # DashO-GameOfLife
 
-A sample Android app that demonstrates using [PreEmptive Protection - DashO](https://www.preemptive.com/products/dasho/overview) with the [DashO Android Gradle Plugin](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html) on an application with libraries and product flavors.
+A sample Android app that demonstrates using [PreEmptive Protection - DashO](https://www.preemptive.com/products/dasho/overview) with the [DashO Gradle Plugin for Android](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html) on an application with libraries and product flavors.
 
 This sample is a [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) simulation application.
 This project consists of the app itself and a library that it uses.
@@ -58,7 +58,7 @@ This sample uses a standard layout for an Android project.
 Setting up protection involves the following steps:
 
 1. Enable and configure R8.
-2. Configure the [DashO Android Gradle Plugin's](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html) location.
+2. Configure the [DashO Gradle Plugin for Android's](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html) location.
 3. Apply the plugin.
 4. Configure [DashO Home](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_dasho_home.html) (if needed).
 5. Generate a configuration file.
@@ -68,7 +68,7 @@ Setting up protection involves the following steps:
 
 ### Enable and Configure R8
 
-The DashO Android Gradle Plugin relies on R8 to perform renaming and removal, so it is important that you enable it.
+The DashO Gradle Plugin for Android relies on R8 to perform renaming and removal, so it is important that you enable it.
 
 In `app/build.gradle`, add the following inside the `android { buildTypes { release { } } }` block:
 
@@ -79,9 +79,9 @@ proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
 
 This will enable R8 with default settings, including optimization.
 
-### Configure the DashO Android Gradle Plugin's Location
+### Configure the DashO AGradle Plugin for Android's Location
 
-The Gradle build script needs to be able to find the [DashO Android Gradle Plugin](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html).
+The Gradle build script needs to be able to find the [DashO Gradle Plugin for Android](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html).
 
 In `build.gradle` add the following to the `repositories` section which is inside `buildscript`:
 
