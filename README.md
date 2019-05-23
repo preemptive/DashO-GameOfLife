@@ -1,6 +1,6 @@
 # DashO-GameOfLife
 
-A sample Android app that demonstrates using [PreEmptive Protection - DashO](https://www.preemptive.com/products/dasho/overview) with the [DashO Android Gradle Plugin](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html) on an application with libraries and product flavors.
+A sample Android app that demonstrates using [PreEmptive Protection - DashO](https://www.preemptive.com/products/dasho/overview) with the [DashO Gradle Plugin for Android](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html) on an application with libraries and product flavors.
 
 This sample is a [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) simulation application.
 This project consists of the app itself and a library that it uses.
@@ -53,7 +53,7 @@ This sample uses a standard layout for an Android project.
 This branch already contains the DashO configuration.
 When following the steps on the `master-vNext` branch, the following files were created and/or modified:
 
-* `build.gradle` - The DashO Android Gradle plugin was added to the build script.
+* `build.gradle` - The DashO Gradle Plugin for Android was added to the build script.
 * `app/build.gradle` - Applied the `com.preemptive.dasho.android` plugin, enabled R8 with `minifyEnabled`, and enabled R8's optimization using `proguardFiles`.
 * `app/free.dox` - Created to configure the protection of the `free` variants.
 * `app/project.dox` -  Created to configure the protection of the `paid` variants.
