@@ -53,68 +53,33 @@ This sample uses a standard layout for an Android project.
 * `app/src/singlePaid` - Resources for the `singlePaid` flavor.
 
 
-## Setting up Protection
+## Set Up Protection
 
 Setting up protection involves the following steps:
 
-1. Enable and configure R8.
-2. Configure the [DashO Gradle Plugin for Android's](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html) location.
-3. Apply the plugin.
-4. Configure [DashO Home](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_dasho_home.html) (if needed).
-5. Generate a configuration file.
-6. Customize the configuration.
+1. Run the DashO [New Project Wizard](https://www.preemptive.com/dasho/pro/userguide/en/getting_started_android.html#gradle-wizard).
+2. Configure [DashO Home](https://www.preemptive.com/dasho/pro/userguide/en/ref_dagp_dasho_home.html) (if needed).
+3. Customize the configuration.
 
 >**Note:** You can preview the final configuration by switching to the `obfuscated-vNext` branch.
 
-### Enable and Configure R8
+### Run the DashO New Project Wizard
 
-The DashO Gradle Plugin for Android relies on R8 to perform renaming and removal, so it is important that you enable it.
+The wizard will guide you through the process of integrating the *DashO Gradle Plugin for Android* into your build.
 
-In `app/build.gradle`, add the following inside the `android { buildTypes { release { } } }` block:
+1. Launch the DashO GUI.
+2. Launch the New Project Wizard by going to `File > Project Wizard...`, if it is not started automatically.
+3. Select `Next`, select `Android (Most projects)`, and select `Next` again.
+4. To enter the project directory, select `DashO-GameOfLife/app` (or `DashO-GameOfLife/app/build.gradle`), and select `Next`.
+5. After reading the Summary, select `Finish` to have the wizard do the integration.
 
-```
-minifyEnabled true
-proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
-```
-
-This will enable R8 with default settings, including optimization.
-
-### Configure the DashO Gradle Plugin for Android's Location
-
-The Gradle build script needs to be able to find the [DashO Gradle Plugin for Android](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html).
-
-In `build.gradle` add the following to the `repositories` section which is inside `buildscript`:
-
-`maven { url 'https://maven.preemptive.com' }`
-
-In `build.gradle` add the following to the `dependencies` section which is inside `buildscript`:
-
-`classpath 'com.preemptive.dasho:dasho-android:0.10.+'`
-
-### Apply the Plugin
-
-Applying the plugin will incorporate DashO into the build process.
-
-In `app/build.gradle` add the following after `apply plugin: 'com.android.application'`:
-
-`apply plugin: 'com.preemptive.dasho.android'`
+At this point the initial integration is complete.
 
 ### Configure DashO Home (If Needed)
 
-The plugin needs to know where DashO is [installed](https://www.preemptive.com/dasho/pro/10.0/userguide/en/install_installation.html#dasho-home) so it can protect the code.
-
-The plugin should find it automatically if DashO is installed in the default location.
-If not, there are multiple ways to [configure DashO Home](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_dasho_home.html).
-
-### Generate a Configuration File
-
-The basic configuration can be generated during the build.
-
-Run the following command:
-
-`gradlew clean assembleRelease -DGENERATE_DASHO_CONFIG`
-
-That will generate an [Android Mode](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_android_mode.html) `project.dox` file in the `app` directory.
+The *DashO Gradle Plugin for Android* will automatically find DashO if it is installed in the default location.
+Otherwise, the plugin needs to know where [DashO Home](https://www.preemptive.com/dasho/pro/10.0/userguide/en/install_installation.html#dasho-home) is so it can run DashO to protect the code.
+There are multiple ways to [configure DashO Home](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_dasho_home.html).
 
 ### Customize the Configuration
 
@@ -125,7 +90,7 @@ These two configurations will start with the same information.
 We are excluding Android's classes as they are not relevant to this sample.
 
 1. Launch the DashO GUI (if not already opened).
-2. Open `app/project.dox`.
+2. Open `app/project.dox` (if not already opened).
 3. If it prompts you to run a build:
     1. Click `OK`.
     2. Run `gradlew clean assembleSinglePaidRelease` from the command line.
@@ -135,7 +100,7 @@ We are excluding Android's classes as they are not relevant to this sample.
 6. Type `android*.**` for the `name` and click OK.
 7. Save the file.
 
-#### Configuring the 'free' Variants
+#### Configure the 'free' Variants
 
 To further encourage users to "buy" the `paid` version, an Emulator Check will be added to the `free` variants.
 If the application is run on an emulator, the entire view will be covered by oscillating [blinkers](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Examples_of_patterns).
@@ -148,13 +113,13 @@ If the application is run on an emulator, the entire view will be covered by osc
     1. Click `OK`.
     2. Run `gradlew clean assembleSingleFreeRelease` from the command line.
     3. Click the refresh button once it is highlighted.
-5. Go to `Checks->Emulator` in the GUI.
+5. Go to the `Checks->Emulator` page in the GUI.
 6. Click `Add` and choose `Emulator Check`
 7. Under `Locations`, check `checkTheLock()` under `AbstractGameOfLifeActivity`.
 8. Set the `Action` to `setLocked()` and click `OK`.
 9. Save the file.
 
-## Running the Application
+## Run the Application
 
 Because of the Emulator Check, the application will respond differently based on where it is run.
 
@@ -169,11 +134,11 @@ Because of the Emulator Check, the application will respond differently based on
 The first two screens are the starting pages for the `menu` and `single` variants.
 The last screen shows what to expect when running a `free` variant on an emulator.
 
-### Building
+### Build
 
 Run `gradlew clean assembleRelease` to compile and protect all the release variants.
 
-### Installing
+### Install
 
 The four different variants can be simultaneously installed:
 
@@ -182,7 +147,7 @@ The four different variants can be simultaneously installed:
 * `gradlew installSingleFreeRelease` - Installs _DashO SF Game Of Life_.
 * `gradlew installSinglePaidRelease` - Installs _DashO SP Game Of Life_.
 
-### Uninstalling
+### Uninstall
 
 You can uninstall all the variants by running `gradlew uninstallAll`.
 
@@ -190,11 +155,11 @@ You can uninstall all the variants by running `gradlew uninstallAll`.
 
 Run a custom task to just do all of it: `gradlew doAllTheThings`.
 
-## Verifying Protection
+## Verify Protection
 
 You can validate the build is using the appropriate configurations and that it is protecting the application.
 
-### Reviewing DashO's Protection
+### Review DashO's Protection
 
 The output from the Gradle build will show when DashO is run.
 
@@ -208,7 +173,7 @@ This will include a `Running:` line where you can see the full arguments used to
 If you want to see more information on what DashO is doing, you can add a `dasho` closure to `app/build.gradle` and [configure](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_config.html#dasho) `verbose true`.
 This will provide you with the verbose output from the protection process.
 
-### Decompiling the APK
+### Decompile the APK
 
 To further investigate you can use the following tools to look at the final protected APK:
 
