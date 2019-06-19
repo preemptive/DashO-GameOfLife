@@ -79,7 +79,7 @@ proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
 
 This will enable R8 with default settings, including optimization.
 
-### Configure the DashO AGradle Plugin for Android's Location
+### Configure the DashO Gradle Plugin for Android's Location
 
 The Gradle build script needs to be able to find the [DashO Gradle Plugin for Android](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html).
 
