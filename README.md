@@ -48,7 +48,7 @@ This sample uses a standard layout for an Android project.
 * `app/src/singleFree` - Resources for the `singleFree` flavor.
 * `app/src/singlePaid` - Resources for the `singlePaid` flavor.
 
-## Setting up Protection
+## Set Up Protection
 
 This branch already contains the DashO configuration.
 When following the steps on the `master-vNext` branch, the following files were created and/or modified:
@@ -62,7 +62,7 @@ When following the steps on the `master-vNext` branch, the following files were 
 >The plugin should find DashO automatically if DashO is installed in the default location.
 >If not, there are multiple ways to [configure DashO Home](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_dasho_home.html).
 
-## Running the Application
+## Run the Application
 
 Because of the Emulator Check, the application will respond differently based on where it is run.
 
@@ -76,11 +76,11 @@ Because of the Emulator Check, the application will respond differently based on
 The first two screens are the starting pages for the `menu` and `single` variants.
 The last screen shows what to expect when running a `free` variant on an emulator.
 
-### Building
+### Build
 
 Run `gradlew clean assembleRelease` to compile and protect all the release variants.
 
-### Installing
+### Install
 
 The four different variants can be simultaneously installed:
 
@@ -89,7 +89,7 @@ The four different variants can be simultaneously installed:
 * `gradlew installSingleFreeRelease` - Installs _DashO SF Game Of Life_.
 * `gradlew installSinglePaidRelease` - Installs _DashO SP Game Of Life_.
 
-### Uninstalling
+### Uninstall
 
 You can uninstall all the variants by running `gradlew uninstallAll`.
 
@@ -97,11 +97,11 @@ You can uninstall all the variants by running `gradlew uninstallAll`.
 
 Run a custom task to just do all of it: `gradlew doAllTheThings`.
 
-## Verifying Protection
+## Verify Protection
 
 You can validate the build is using the appropriate configurations and that it is protecting the application.
 
-### Reviewing DashO's Protection
+### Review DashO's Protection
 
 The output from the Gradle build will show when DashO is run.
 
@@ -115,7 +115,7 @@ This will include a `Running:` line where you can see the full arguments used to
 If you want to see more information on what DashO is doing, you can add a `dasho` closure to `app/build.gradle` and [configure](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_config.html#dasho) `verbose true`.
 This will provide you with the verbose output from the protection process.
 
-### Decompiling the APK
+### Decompile the APK
 
 To further investigate you can use the following tools to look at the final protected APK:
 
