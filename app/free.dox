@@ -5,9 +5,7 @@
         <classes name="android*.**"/>
     </globalProcessingExclude>
     <controlflow option="on"/>
-    <stringencrypt option="on">
-        <seOutput path="dasho-maps/${buildVariant}-se.map"/>
-    </stringencrypt>
+    <stringencrypt option="on"/>
     <injection>
         <checks>
             <emulatorCheck action="setLocked()">
