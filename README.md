@@ -81,6 +81,9 @@ The *DashO Gradle Plugin for Android* will automatically find DashO if it is ins
 Otherwise, the plugin needs to know where [DashO Home](https://www.preemptive.com/dasho/pro/10.0/userguide/en/install_installation.html#dasho-home) is so it can run DashO to protect the code.
 There are multiple ways to [configure DashO Home](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_dasho_home.html).
 
+The wizard will have already added a `dasho { }` closure in `build.gradle` with a `home` line commented out.
+Uncommenting this line will set DashO Home to the location of the current DashO installation.
+
 ### Customize the Configuration
 
 Since this sample demonstrates product flavor support, we need two different configuration files.
