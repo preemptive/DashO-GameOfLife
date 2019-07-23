@@ -60,3 +60,13 @@ dependencies {
 }
 
 android { buildTypes { release { minifyEnabled true } } }
+
+dasho {
+    // debug false
+    // doxFilename "project.dox"
+    // enabledBuildVariants "release"
+    // home 'C:/Program Files/PreEmptive Solutions/PreEmptive Protection - DashO 10.0/app' // for more information about DashO Home see the DashO User Guide
+    // javaOptions "-Xmx1024M", "-Xms512M" //Normally has no default values
+    // searchVersion "10"
+    // verbose false
+}
