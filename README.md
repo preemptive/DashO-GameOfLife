@@ -1,43 +1,40 @@
 # DashO-GameOfLife
 
-A sample Android app that demonstrates using [PreEmptive Protection - DashO](https://www.preemptive.com/products/dasho/overview) with libraries and product flavors.
+A sample Android app that demonstrates using [PreEmptive Protection - DashO](https://www.preemptive.com/products/dasho/overview) with the [DashO Gradle Plugin for Android](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html) on an application with libraries and product flavors.
 
-This sample is a [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) simulation application that uses a library, both built in the same project.
-The application has two flavor dimensions (`view` and `interactive`) which [combine](https://developer.android.com/studio/build/build-variants.html#flavor-dimensions) four product flavors (`menu`, `single`, `withInteraction`, and `withoutInteraction`).
+This sample is a [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) simulation application.
+This project consists of the app itself and a library that it uses.
 
-The `view` dimension determines if the application launches a `menu` with a list of three views or just launches a `single` view.
+The application has two flavor dimensions: `view` and `monetization`.
+The `view` dimension determines if the application launches a `menu` with a list of two views or just launches a `single` view.
+The `monetization` dimension determines whether the application is interactive (`paid`) or non-interactive (`free`).
+This interaction allows the user to give life to a cell by tapping.
 
-The `interaction` dimension determines if the user can give life to a cell.
+These dimensions are ultimately [combined](https://developer.android.com/studio/build/build-variants.html#flavor-dimensions) to create four applications:
 
-This ultimately creates four applications:
-
-|             |                   `withInteraction`                              |                         `withoutInteraction`                            |
-|-------------|------------------------------------------------------------------|-------------------------------------------------------------------------|
-|**`menu`**   | `menuWithInteraction` - Shows a menu of three interactive views. | `menuWithoutInteraction` - Shows a menu of three non-interactive views. |
-|**`single`** | `singleWithInteraction` - Shows a single interactive view.       | `singleWithoutInteraction` - Shows a single non-interactive view.       |
+|             |                      `paid`                         |                         `free`                          |
+|-------------|-----------------------------------------------------|---------------------------------------------------------|
+|**`menu`**   | `menuPaid` - Shows a menu of two interactive views. | `menuFree` - Shows a menu of two non-interactive views. |
+|**`single`** | `singlePaid` - Shows a single interactive view.     | `singleFree` - Shows a single non-interactive view.     |
 
 The library is used by all four applications.
 The `menu` flavors use the library's code directly and reference the library's `GameOfLifeView` class via XML.
 The `single` flavors only use the library's code directly.
 
-There are different ways DashO could be set up to handle this project:
+These instructions will demonstrate protecting the application with variant-specific configurations.
 
-* Protect the library and the application independently.
-* Protect both together using a single DashO configuration.
-* Protect both together but with variant-specific DashO configurations.
-
-These instructions will demonstrate the last scenario, which provides the strongest protection.
-
->**Note:** DashO can protect both `debug` and `release` builds, but this sample will be using `debug` builds so a signing key does not have to be generated and configured.
+>**Note:** DashO can protect both `debug` and `release` builds.
+>This sample will be protecting `release` builds.
+>`Debug` builds can be protected by [configuring](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_config.html#dasho) `enabledBuildVariants`.
 
 ## Prerequisites
 
 * [Java 8](http://www.oracle.com/technetwork/java/index.html)
-* [PreEmptive Protection - DashO v9.3.0](https://www.preemptive.com/products/dasho/downloads) (or later)
+* [PreEmptive Protection - DashO v10.0.0](https://www.preemptive.com/products/dasho/downloads) (or later)
 * [Android Build Environment](https://developer.android.com/studio/index.html)
-  * Platform v28
+  * Platform v29
 
->**Note:** The Android-specific requirements can be changed by editing the `build.gradle` files.
+>**Note:** The Android-specific settings can be changed by editing the `build.gradle` files.
 
 ## Code Layout
 
@@ -46,137 +43,114 @@ This sample uses a standard layout for an Android project.
 * `library` - The library project.
 * `app` - The application project.
 * `app/src/main` - The majority of the application source.
-* `app/src/menu` - The `AndroidManifest.xml` for the `main` flavor.
-* `app/src/menuWithInteraction` - Resources for this flavor's application name.
-* `app/src/menuWithoutInteraction` - Resources for this flavor's application name.
-* `app/src/single` - The `AndroidManifest.xml` for the `single` flavor.
-* `app/src/singleWithInteraction` - Resources for this flavor's application name.
-* `app/src/singleWithoutInteraction` - Resources for this flavor's application name.
-* `app/src/withInteraction` - Code which sets up user interaction with the `GameOfLifeView`.
-* `app/src/withoutInteraction` - Code which does not allow user interaction with the `GameOfLifeView`.
+* `app/src/free` - Code which does not allow user interaction with the `GameOfLifeView`.
+* `app/src/paid` - Code which allows user interaction with the `GameOfLifeView`.
+* `app/src/menu` - The `AndroidManifest.xml` for all `menu` flavors.
+* `app/src/single` - The `AndroidManifest.xml` for all `single` flavors.
+* `app/src/menuFree` - Resources for the `menuFree` flavor.
+* `app/src/menuPaid` - Resources for the `menuPaid` flavor.
+* `app/src/singleFree` - Resources for the `singleFree` flavor.
+* `app/src/singlePaid` - Resources for the `singlePaid` flavor.
 
 
-## Setting up Protection
+## Set Up Protection
 
-DashO's [New Project Wizard](https://www.preemptive.com/dasho/pro/userguide/en/getting_started_wizard.html#android) makes this project easy to set up.
-In this case, you will be setting up a single default project and two projects for specific product flavors.
-The library will be configured to be protected as part of the main application.
+Setting up protection involves the following steps:
 
->**Note:** You can preview the final DashO configuration by switching to the `obfuscated` branch.
+1. Run the DashO [New Project Wizard](https://www.preemptive.com/dasho/pro/userguide/en/getting_started_android.html#gradle-wizard).
+2. Configure [DashO Home](https://www.preemptive.com/dasho/pro/userguide/en/ref_dagp_dasho_home.html) (if needed).
+3. Customize the configuration.
 
-### Initial Compile
+>**Note:** You can preview the final configuration by switching to the `obfuscated-vNext` branch.
 
-Compile the application by running `gradlew clean assembleDebug`.
-This will compile all the debug Build Variants.
+### Run the DashO New Project Wizard
 
-### The Default Project
+The wizard will guide you through the process of integrating the *DashO Gradle Plugin for Android* into your build.
 
-This section shows how to set up the main DashO configuration, which will be used by any flavors that don't have a custom DashO configuration of their own.
-Ultimately, it will only be used by the `menu` flavor builds.
+1. Launch the DashO GUI.
+2. Launch the New Project Wizard by going to `File > Project Wizard...`, if it is not started automatically.
+3. Select `Next`, select `Android (Most projects)`, and select `Next` again.
+4. To enter the project directory, select `DashO-GameOfLife/app` (or `DashO-GameOfLife/app/build.gradle`), and select `Next`.
+5. After reading the Summary, select `Finish` to have the wizard do the integration.
 
-<a name="wizard" />
+At this point the initial integration is complete.
 
-1. Launch _PreEmptive Protection - DashO_. (Register if necessary)
-2. If it is not already showing, start the New Project Wizard (**File > Project Wizard**).
-3. Click `Next`.
-4. Select `An Android application or library`.
-5. Click `Next`.
-6. Keep `Gradle` as the build environment.
-7. Browse to this project and select the `app` directory or `app/build.gradle` file. <a name="selectVariant"/>
-8. Select the `menuWithInteractionDebug` Build Variant. The `menu` flavor builds use all the Activities and Views which the `single` flavor builds use, so it can be used to create a default project.
-9. Click `Next`.
-10. Verify the `Android SDK Home` was found.
-11. Verify `android-28` (or an appropriate value) is selected as the platform.
-12. Click `Next`. It will analyze the files and resources.
-13. This screen would allow you to add local `.jar` files to the project; not necessary in this case.
-14. Click `Next`.
-15. Four entry points will be selected.
-16. Click `Next`.
-17. Since this configuration won't be flavor-specific, leave the `Build Variant` boxes unchecked.
-18. Click `Finish`. <a name="set_remove"/>
-19. Go to the [`Removal` section](https://www.preemptive.com/dasho/pro/userguide/en/ui_removal.html#options) in the UI.
-20. Set `Unused Classes:` to `Remove` allowing DashO to remove more unused classes.
-21. Set `Unused Methods:` to `Remove` allowing DashO to remove more unused methods.
-22. Go to the [`Entry Points -> Special Classes` section](https://www.preemptive.com/dasho/pro/userguide/en/ui_entry.html#special_classes) in the UI.
-23. Open the properties of `CustomParamsActivity`, `ThroughCodeActivity`, and `ThroughXMLActivity` and check `Rename Class`.
-    This improves the strength of protection as it will rename these classes and their entries in the manifest.
-24. Save the project.
+### Configure DashO Home (If Needed)
 
-The Gradle build environment has now been configured to use the DashO Gradle Plugin and a DashO project has been created which will work to protect all four variants of this project.
+The *DashO Gradle Plugin for Android* will automatically find DashO if it is installed in the default location.
+Otherwise, the plugin needs to know where [DashO Home](https://www.preemptive.com/dasho/pro/10.0/userguide/en/install_installation.html#dasho-home) is so it can run DashO to protect the code.
+There are multiple ways to [configure DashO Home](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_dasho_home.html).
 
->**Note:** The wizard creates a backup of any file it modifies.
+The wizard will have already added a `dasho { }` closure in `build.gradle` with a `home` line commented out.
+Uncommenting this line will set DashO Home to the location of the current DashO installation.
 
-### The `singleWithInteraction` and `singleWithoutInteraction` Flavor Projects.
+### Customize the Configuration
 
-The `single` flavor projects do not use all the Activities which are used by the `menu` flavors.
-If these builds used the default `project.dox`, created in the previous section, those Activities would remain in the application because they are referenced by that configuration.
+Since this sample demonstrates product flavor support, we need two different configuration files.
+One to handle the `free` variants and one for the `paid` variants.
 
-This section shows how to set up configurations to better handle the `singleWithInteraction` and `singleWithoutInteraction` flavors, by only referencing the one Activity used by those flavors.
+These two configurations will start with the same information.
+We are excluding Android's classes as they are not relevant to this sample.
 
-1. Run the wizard with the same steps [2-14](#wizard) used when creating the default project, but select `singleWithInteractionDebug` in step [8](#selectVariant).
-2. You should now see one entry point selected.
-3. Click `Next`.
-4. Check the `Create a flavor-specific project...` box to name the `.dox` file for this flavor specifically.
-5. Click `Finish`
-6. Repeat the `Removal` steps [19-21](#set_remove).
-7. Save the project.
+1. Launch the DashO GUI (if not already opened).
+2. Open `app/project.dox` (if not already opened).
+3. If it prompts you to run a build:
+    1. Click `OK`.
+    2. Run `gradlew clean assembleSinglePaidRelease` from the command line.
+    3. Click the refresh button once it is highlighted.
+4. Go to `Global Exclude` in the GUI.
+5. Click `New Class`
+6. Type `android*.**` for the `name` and click OK.
+7. Save the file.
 
-Repeat the above steps, but select `singleWithoutIteractionDebug` in step [8](#selectVariant).
+#### Configure the 'free' Variants
 
-You now have two flavor-specific projects and one default project.
-The flavor-specific projects reference the one Activity used by those flavors, while the default project references all four Activities used by the `menu` flavors.
+To further encourage users to "buy" the `paid` version, an Emulator Check will be added to the `free` variants.
+If the application is run on an emulator, the entire view will be covered by oscillating [blinkers](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Examples_of_patterns).
 
-Since this sample works with `debug` builds, edit `app/dasho.gradle` and add `android{buildTypes{debug{minifyEnabled true}}}` at the bottom so DashO will protect the `debug` builds.
+1. Copy `app/project.dox` to `app/free.dox`.
+   This file will be used by the `free` variants.
+2. Launch the DashO GUI (if not already opened).
+3. Open `app/free.dox`.
+4. If it prompts you to run a build:
+    1. Click `OK`.
+    2. Run `gradlew clean assembleSingleFreeRelease` from the command line.
+    3. Click the refresh button once it is highlighted.
+5. Go to the `Checks->Emulator` page in the GUI.
+6. Click `Add` and choose `Emulator Check`
+7. Under `Locations`, check `checkTheLock()` under `AbstractGameOfLifeActivity`.
+8. Set the `Action` to `setLocked()` and click `OK`.
+9. Save the file.
 
-When you build (`gradlew clean build`), the `single` flavors will not retain those extra classes, while the `menu` flavors still have all four.
+## Run the Application
 
-However, the library is still not being protected.
-The next section will walk through protecting the library.
+Because of the Emulator Check, the application will respond differently based on where it is run.
 
-<a name="library"/>
+|             |                   Paid Variants                      |                                 Free Variants                                 |
+|-------------|------------------------------------------------------|-------------------------------------------------------------------------------|
+|**Device**   | Interactive views. Tapping a cell brings it to life. | Non-interactive views. Tapping tells user to "upgrade".                       |
+|**Emulator** | Interactive views. Tapping a cell brings it to life. | Non-interactive views with blinker patterns. Tapping tells user to "upgrade". |
 
-### The `library` Project
 
-DashO can protect libraries as standalone projects creating a protected `.AAR` file.
-That approach, however, would require not renaming any class, method, or field used by any application that depends on the library.
-In this sample, the library will be protected as part of main application, which allows DashO to rename and remove many more of the library's classes, methods, and fields.
+![Screenshot](screenshot.png)
 
-To include the library when DashO protects the application:
+The first two screens are the starting pages for the `menu` and `single` variants.
+The last screen shows what to expect when running a `free` variant on an emulator.
 
-1. Edit `app/dasho.gradle` and add `includeAsInputs = [':library']` inside the `dashOConfig` section.
+### Build
 
-Since the application's layout files reference the `GameOfLifeView` view defined in the library, that view needs to be added as an entry point, so that DashO will not remove or rename the methods used by the reference in the XML resources.
+Run `gradlew clean assembleRelease` to compile and protect all the release variants.
 
-1. Open `app/project.dox` in the DashO UI.
-2. Navigate to `Entry Points` and click `New Class`.
-3. Enter `io.kimo.gameoflifeview.view.GameOfLifeView` for the name of the class.
-4. Click `OK`.
-5. Click `New Method`.
-6. Enter `<init>` as the name of the method.
-7. Enter `**` as the signature for the method.
-8. Click `OK`.
-9. Save the project.
-
->**Note:** The `single` flavor projects do not need this change because those variants use the view directly and do not reference it via an XML layout, so DashO will discover that code automatically.
-
-When you build (`gradlew clean build`), the library is now protected as part of each build variant of the application.
-
-## Running the Application
-
-### Building
-
-Run `gradlew clean build` to compile and protect all the variants.
-
-### Installing
+### Install
 
 The four different variants can be simultaneously installed:
 
-* `gradlew installMenuWithInteractionDebug` - Installs _DashO MI Game Of Life_.
-* `gradlew installMenuWithoutInteractionDebug` - Installs _DashO MN Game Of Life_.
-* `gradlew installSingleWithInteractionDebug` - Installs _DashO SI Game Of Life_.
-* `gradlew installSingleWithoutInteractionDebug` - Installs _DashO SN Game Of Life_.
+* `gradlew installMenuFreeRelease` - Installs _DashO MF Game Of Life_.
+* `gradlew installMenuPaidRelease` - Installs _DashO MP Game Of Life_.
+* `gradlew installSingleFreeRelease` - Installs _DashO SF Game Of Life_.
+* `gradlew installSinglePaidRelease` - Installs _DashO SP Game Of Life_.
 
-### Uninstalling
+### Uninstall
 
 You can uninstall all the variants by running `gradlew uninstallAll`.
 
@@ -184,14 +158,13 @@ You can uninstall all the variants by running `gradlew uninstallAll`.
 
 Run a custom task to just do all of it: `gradlew doAllTheThings`.
 
-## Verifying Protection
+## Verify Protection
 
 You can validate the build is using the appropriate configurations and that it is protecting the application.
 
-### Reviewing DashO's Protection
+### Review DashO's Protection
 
-The output from DashO will show how classes were renamed and what was removed.
-Review DashO's report files which will be in the `app/build/dasho-results` directory, under directories specific to the product flavor and build type (e.g. `app/build/dasho-results/menuWithInteraction/debug`).
+The output from the Gradle build will show when DashO is run.
 
 ### Verify the Flavor-specific Configuration
 
@@ -200,10 +173,10 @@ This will include a `Running:` line where you can see the full arguments used to
 
 ### Verbose Output
 
-If you want to see more information on what DashO is doing, you can add `verbose = true` to the `dashOConfig` section of `app/dasho.gradle`.
+If you want to see more information on what DashO is doing, you can add a `dasho` closure to `app/build.gradle` and [configure](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_config.html#dasho) `verbose true`.
 This will provide you with the verbose output from the protection process.
 
-### Decompiling the APK
+### Decompile the APK
 
 To further investigate you can use the following tools to look at the final protected APK:
 

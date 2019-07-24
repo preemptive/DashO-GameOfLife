@@ -1,17 +1,17 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
 
     defaultConfig {
         applicationId "com.preemptive.dasho.example.gameoflife"
         minSdkVersion 14
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
     }
 
-    flavorDimensions 'view', 'interaction'
+    flavorDimensions 'view', 'monetization'
 
     productFlavors {
         menu {
@@ -22,13 +22,28 @@ android {
             dimension 'view'
             applicationIdSuffix ".single"
         }
-        withInteraction {
-            dimension 'interaction'
-            applicationIdSuffix ".interactive"
+        free {
+            dimension 'monetization'
+            applicationIdSuffix ".free"
         }
-        withoutInteraction {
-            dimension 'interaction'
-            applicationIdSuffix ".noninteractive"
+        paid {
+            dimension 'monetization'
+            applicationIdSuffix ".paid"
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("keystore.ks")
+            storePassword "password"
+            keyAlias "correct_cert"
+            keyPassword "password"
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
         }
     }
 
@@ -38,7 +53,6 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation project(':library')

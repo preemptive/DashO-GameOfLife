@@ -16,10 +16,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     public static final int DEFAULT_GOL_VIEW_CODE = 0;
-    public static final int GOL_VIEW_XML = 1;
-    public static final int CUSTOM_COLORS = 2;
+    public static final int CUSTOM_COLORS = 1;
 
-    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void configureRecyclerView() {
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycler);
+        RecyclerView recyclerView = findViewById(R.id.recycler);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -41,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
 
     private class SimpleRecyclerAdapter extends RecyclerView.Adapter<SimpleRecyclerAdapter.ViewHolder> {
 
-        public List<String> examplesOptions;
+        private List<String> examplesOptions;
 
-        public SimpleRecyclerAdapter() {
+        private SimpleRecyclerAdapter() {
             configureOptions();
         }
 
@@ -64,13 +62,13 @@ public class MainActivity extends AppCompatActivity {
             return examplesOptions == null ? 0 : examplesOptions.size();
         }
 
-        public class ViewHolder extends RecyclerView.ViewHolder implements RecyclerView.OnClickListener {
+        private class ViewHolder extends RecyclerView.ViewHolder implements RecyclerView.OnClickListener {
 
             private TextView text;
 
-            public ViewHolder(View itemView) {
+            private ViewHolder(View itemView) {
                 super(itemView);
-                text = (TextView) itemView.findViewById(R.id.text);
+                text = itemView.findViewById(R.id.text);
                 itemView.setOnClickListener(this);
             }
 
@@ -81,9 +79,6 @@ public class MainActivity extends AppCompatActivity {
                     case DEFAULT_GOL_VIEW_CODE:
                         startActivity(new Intent(MainActivity.this, ThroughCodeActivity.class));
                         break;
-                    case GOL_VIEW_XML:
-                        startActivity(new Intent(MainActivity.this, ThroughXMLActivity.class));
-                        break;
                     case CUSTOM_COLORS:
                         startActivity(new Intent(MainActivity.this, CustomParamsActivity.class));
                         break;
@@ -93,9 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
         private void configureOptions() {
             examplesOptions = new ArrayList<>();
-
             examplesOptions.add(getString(R.string.def_view_name));
-            examplesOptions.add(getString(R.string.xml_view_name));
             examplesOptions.add(getString(R.string.custom_view_name));
         }
     }

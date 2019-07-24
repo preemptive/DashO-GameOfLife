@@ -107,6 +107,10 @@ public class GameOfLifeView extends SurfaceView implements Runnable {
         }
     }
 
+    public void setupBlinkers() {
+        world.setupBlinkers();
+    }
+
     public void start() {
         thread = null;
         isRunning = true;
