@@ -1,18 +1,18 @@
 apply plugin: 'com.android.application'
-apply from: 'dasho.gradle'
+apply plugin: 'com.preemptive.dasho.android'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
 
     defaultConfig {
         applicationId "com.preemptive.dasho.example.gameoflife"
         minSdkVersion 14
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
     }
 
-    flavorDimensions 'view', 'interaction'
+    flavorDimensions 'view', 'monetization'
 
     productFlavors {
         menu {
@@ -23,13 +23,28 @@ android {
             dimension 'view'
             applicationIdSuffix ".single"
         }
-        withInteraction {
-            dimension 'interaction'
-            applicationIdSuffix ".interactive"
+        free {
+            dimension 'monetization'
+            applicationIdSuffix ".free"
         }
-        withoutInteraction {
-            dimension 'interaction'
-            applicationIdSuffix ".noninteractive"
+        paid {
+            dimension 'monetization'
+            applicationIdSuffix ".paid"
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("keystore.ks")
+            storePassword "password"
+            keyAlias "correct_cert"
+            keyPassword "password"
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
         }
     }
 
@@ -39,8 +54,19 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation project(':library')
+}
+
+android { buildTypes { release { minifyEnabled true } } }
+
+dasho {
+    // debug false
+    // doxFilename "project.dox"
+    // enabledBuildVariants "release"
+    // home 'C:/Program Files/PreEmptive Solutions/PreEmptive Protection - DashO 10.0/app' // for more information about DashO Home see the DashO User Guide
+    // javaOptions "-Xmx1024M", "-Xms512M" //Normally has no default values
+    // searchVersion "10"
+    // verbose false
 }
