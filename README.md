@@ -186,7 +186,7 @@ To further investigate you can use the following tools to look at the final prot
 
 ## About DashO
 
-[PreEmptive Protection DashO for Android and Java](https://www.preemptive.com/products/dasho/) is an obfuction and application protection solution from [PreEmptive](https://www.preemptive.com/).
+[PreEmptive Protection DashO for Android & Java](https://www.preemptive.com/products/dasho/) is an obfuscation and application protection solution from [PreEmptive](https://www.preemptive.com/).
 DashO's obfuscation, hardening, and runtime check features make your application much harder to reverse engineer, pirate, or steal data from.
 World-class technical support for DashO is available through our [website](https://www.preemptive.com/support/dasho-support) and/or our [support request form](https://www.preemptive.com/contact/supportrequestform).
 
