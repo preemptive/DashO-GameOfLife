@@ -1,6 +1,6 @@
 # DashO-GameOfLife
 
-A sample Android app that demonstrates using [PreEmptive Protection - DashO](https://www.preemptive.com/products/dasho/overview) with the [DashO Gradle Plugin for Android](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html) on an application with libraries and product flavors.
+A sample Android app that demonstrates using [PreEmptive Protection DashO for Android & Java](https://www.preemptive.com/products/dasho/overview) with the [DashO Gradle Plugin for Android](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html) on an application with libraries and product flavors.
 
 This sample is a [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) simulation application.
 This project consists of the app itself and a library that it uses.
@@ -26,7 +26,7 @@ The instructions on the `master-vNext` branch demonstrate protecting the `releas
 ## Prerequisites
 
 * [Java 8](http://www.oracle.com/technetwork/java/index.html)
-* [PreEmptive Protection - DashO v10.0.0](https://www.preemptive.com/products/dasho/downloads) (or later)
+* [PreEmptive Protection DashO for Android & Java v10.0.0](https://www.preemptive.com/products/dasho/downloads) (or later)
 * [Android Build Environment](https://developer.android.com/studio/index.html)
   * Platform v29
 
@@ -125,7 +125,7 @@ To further investigate you can use the following tools to look at the final prot
 
 ## About DashO
 
-_PreEmptive Protection - DashO_ is a [Java and Android obfuscator](https://www.preemptive.com/products/dasho/) and application hardening solution from [PreEmptive Solutions](https://www.preemptive.com/).
+[PreEmptive Protection DashO for Android and Java](https://www.preemptive.com/products/dasho/) is an obfuction and application protection solution from [PreEmptive](https://www.preemptive.com/).
 DashO's obfuscation, hardening, and runtime check features make your application much harder to reverse engineer, pirate, or steal data from.
 World-class technical support for DashO is available through our [website](https://www.preemptive.com/support/dasho-support) and/or our [support request form](https://www.preemptive.com/contact/supportrequestform).
 
