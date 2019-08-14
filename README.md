@@ -1,6 +1,6 @@
 # DashO-GameOfLife
 
-A sample Android app that demonstrates using [PreEmptive Protection DashO for Android & Java](https://www.preemptive.com/products/dasho/overview) with the [DashO Gradle Plugin for Android](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html) on an application with libraries and product flavors.
+A sample Android™ app that demonstrates using [PreEmptive Protection™ DashO™ for Android & Java](https://www.preemptive.com/products/dasho/overview) with the [DashO Gradle Plugin for Android](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html) on an application with libraries and product flavors.
 
 This sample is a [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) simulation application.
 This project consists of the app itself and a library that it uses.
@@ -29,7 +29,7 @@ These instructions will demonstrate protecting the application with variant-spec
 
 ## Prerequisites
 
-* [Java 8](http://www.oracle.com/technetwork/java/index.html)
+* [Java™ 8](http://www.oracle.com/technetwork/java/index.html)
 * [PreEmptive Protection DashO for Android & Java v10.0.0](https://www.preemptive.com/products/dasho/downloads) (or later)
 * [Android Build Environment](https://developer.android.com/studio/index.html)
   * Platform v29
@@ -211,3 +211,9 @@ This sample is based on [GameOfLifeView](https://github.com/thiagokimo/GameOfLif
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+
+Android is a trademark of Google LLC.
+GitHub is a registered trademark of GitHub, Inc.
+Gradle is a registered trademark of Gradle, Inc.
+Oracle and Java are registered trademarks of Oracle and/or its affiliates.
+Other names may be trademarks of their respective owners.
