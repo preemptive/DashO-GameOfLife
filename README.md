@@ -94,7 +94,7 @@ We are excluding Android's classes as they are not relevant to this sample.
 
 1. Open `app/build.gradle`
 2. Uncomment `// excludeFromProtection null //See docs for details`.
-3. Replace `null` with `"android"` to make it read `excludeFromProtection "android" //See docs for details`
+3. Replace `null` with `"^android"` to make it read `excludeFromProtection "android" //See docs for details`
 
 #### Configure the 'free' Variants
 
