@@ -61,7 +61,7 @@ Setting up protection involves the following steps:
 2. Configure [DashO Home](https://www.preemptive.com/dasho/pro/userguide/en/ref_dagp_dasho_home.html) (if needed).
 3. Customize the configuration.
 
->**Note:** You can preview the final configuration by switching to the `obfuscated-vNext` branch.
+>**Note:** You can preview the final configuration by switching to the `obfuscated` branch.
 
 ### Run the DashO New Project Wizard
 
@@ -90,18 +90,7 @@ Since this sample demonstrates product flavor support, we need two different con
 One to handle the `free` variants and one for the `paid` variants.
 
 These two configurations will start with the same information.
-We are excluding Android's classes as they are not relevant to this sample.
-
-1. Launch the DashO GUI (if not already opened).
-2. Open `app/project.dox` (if not already opened).
-3. If it prompts you to run a build:
-    1. Click `OK`.
-    2. Run `gradlew clean assembleSinglePaidRelease` from the command line.
-    3. Click the refresh button once it is highlighted.
-4. Go to `Global Exclude` in the GUI.
-5. Click `New Class`
-6. Type `android*.**` for the `name` and click OK.
-7. Save the file.
+The `paid` variants will use `app/project.dox`.
 
 #### Configure the 'free' Variants
 
@@ -119,6 +108,7 @@ If the application is run on an emulator, the entire view will be covered by osc
 5. Go to the `Checks->Emulator` page in the GUI.
 6. Click `Add` and choose `Emulator Check`
 7. Under `Locations`, check `checkTheLock()` under `AbstractGameOfLifeActivity`.
+   (You will need to scroll down past the `androidx` packages and expand `AbstractGameOfLifeActivity` under `com.preemptive.dasho.example.gameoflife`.)
 8. Set the `Action` to `setLocked()` and click `OK`.
 9. Save the file.
 
