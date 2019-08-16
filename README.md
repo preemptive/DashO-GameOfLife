@@ -108,7 +108,7 @@ If the application is run on an emulator, the entire view will be covered by osc
 5. Go to the `Checks->Emulator` page in the GUI.
 6. Click `Add` and choose `Emulator Check`
 7. Under `Locations`, check `checkTheLock()` under `AbstractGameOfLifeActivity`.
-   (You will need to scroll down past the `androidx` packages and expand `AbstractGameOfLifeActivity`.)
+   (You will need to scroll down past the `androidx` packages and expand `AbstractGameOfLifeActivity` under `com.preemptive.dasho.example.gameoflife`.)
 8. Set the `Action` to `setLocked()` and click `OK`.
 9. Save the file.
 
