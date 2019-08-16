@@ -90,7 +90,7 @@ Since this sample demonstrates product flavor support, we need two different con
 One to handle the `free` variants and one for the `paid` variants.
 
 These two configurations will start with the same information.
-The `paid` variant will use `app/project.dox`.
+The `paid` variants will use `app/project.dox`.
 
 #### Configure the 'free' Variants
 
