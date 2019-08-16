@@ -65,7 +65,7 @@ dasho {
     // debug false
     // doxFilename "project.dox"
     // enabledBuildVariants "release"
-    excludeFromProtection "^android" //See docs for details
+    // excludeFromProtection null //See docs for details
     // home 'C:/Program Files/PreEmptive Protection DashO 10.0/app' // for more information about DashO Home see the DashO User Guide
     // javaOptions "-Xmx1024M", "-Xms512M" //Normally has no default values
     // searchVersion "10"
