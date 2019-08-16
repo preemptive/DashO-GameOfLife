@@ -90,21 +90,7 @@ Since this sample demonstrates product flavor support, we need two different con
 One to handle the `free` variants and one for the `paid` variants.
 
 These two configurations will start with the same information.
-We are excluding Android's classes as they are not relevant to this sample.
-
-1. Open `app/build.gradle`
-2. Uncomment `// excludeFromProtection null //See docs for details`.
-3. Replace `null` with `"^android"` to make it read `excludeFromProtection "^android" //See docs for details`
-4. Launch the DashO GUI (if not already opened).
-5. Open `app/project.dox` (if not already opened).
-6. If it prompts you to run a build:
-    1. Click `OK`.
-    2. Run `gradlew clean assembleSinglePaidRelease` from the command line.
-    3. Click the refresh button once it is highlighted.
-7. Go to `Global Exclude` in the GUI.
-8. Click `New Class`
-9. Type `android*.**` for the `name` and click OK.
-10. Save the file.
+The `paid` variant will use `app/project.dox`.
 
 #### Configure the 'free' Variants
 
@@ -122,6 +108,7 @@ If the application is run on an emulator, the entire view will be covered by osc
 5. Go to the `Checks->Emulator` page in the GUI.
 6. Click `Add` and choose `Emulator Check`
 7. Under `Locations`, check `checkTheLock()` under `AbstractGameOfLifeActivity`.
+   (You will need to scroll down past the `androidx` packages and expand `AbstractGameOfLifeActivity`.)
 8. Set the `Action` to `setLocked()` and click `OK`.
 9. Save the file.
 
