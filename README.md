@@ -92,16 +92,9 @@ One to handle the `free` variants and one for the `paid` variants.
 These two configurations will start with the same information.
 We are excluding Android's classes as they are not relevant to this sample.
 
-1. Launch the DashO GUI (if not already opened).
-2. Open `app/project.dox` (if not already opened).
-3. If it prompts you to run a build:
-    1. Click `OK`.
-    2. Run `gradlew clean assembleSinglePaidRelease` from the command line.
-    3. Click the refresh button once it is highlighted.
-4. Go to `Global Exclude` in the GUI.
-5. Click `New Class`
-6. Type `android*.**` for the `name` and click OK.
-7. Save the file.
+1. Open `app/build.gradle`
+2. Uncomment `// excludeFromProtection null //See docs for details`.
+3. Replace `null` with `"android"` to make it read `excludeFromProtection "android" //See docs for details`
 
 #### Configure the 'free' Variants
 
