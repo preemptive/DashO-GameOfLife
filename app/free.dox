@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <dasho mode="android" version="10.0.0">
-    <propertylist/>
-    <globalProcessingExclude>
-        <classes name="android*.**"/>
-    </globalProcessingExclude>
     <controlflow option="on"/>
     <stringencrypt option="on"/>
     <injection>
