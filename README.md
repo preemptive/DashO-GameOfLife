@@ -61,7 +61,7 @@ Setting up protection involves the following steps:
 2. Configure [DashO Home](https://www.preemptive.com/dasho/pro/userguide/en/ref_dagp_dasho_home.html) (if needed).
 3. Customize the configuration.
 
->**Note:** You can preview the final configuration by switching to the `obfuscated-vNext` branch.
+>**Note:** You can preview the final configuration by switching to the `obfuscated` branch.
 
 ### Run the DashO New Project Wizard
 
