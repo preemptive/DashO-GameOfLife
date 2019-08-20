@@ -1,6 +1,6 @@
 # DashO-GameOfLife
 
-A sample Android™ app that demonstrates using [PreEmptive Protection™ DashO™ for Android & Java](https://www.preemptive.com/products/dasho/overview) with the [DashO Gradle Plugin for Android](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html) on an application with libraries and product flavors.
+A sample Android™ app that demonstrates using [PreEmptive Protection™ DashO™ for Android & Java](https://www.preemptive.com/products/dasho/overview) with the [DashO Gradle Plugin for Android](https://www.preemptive.com/dasho/pro/userguide/en/ref_dagp_index.html) on an application with libraries and product flavors.
 
 This sample is a [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) simulation application.
 This project consists of the app itself and a library that it uses.
@@ -25,7 +25,7 @@ These instructions will demonstrate protecting the application with variant-spec
 
 >**Note:** DashO can protect both `debug` and `release` builds.
 >This sample will be protecting `release` builds.
->`Debug` builds can be protected by [configuring](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_config.html#dasho) `enabledBuildVariants`.
+>`Debug` builds can be protected by [configuring](https://www.preemptive.com/dasho/pro/userguide/en/ref_dagp_config.html#dasho) `enabledBuildVariants`.
 
 ## Prerequisites
 
@@ -78,8 +78,8 @@ At this point the initial integration is complete.
 ### Configure DashO Home (If Needed)
 
 The *DashO Gradle Plugin for Android* will automatically find DashO if it is installed in the default location.
-Otherwise, the plugin needs to know where [DashO Home](https://www.preemptive.com/dasho/pro/10.0/userguide/en/install_installation.html#dasho-home) is so it can run DashO to protect the code.
-There are multiple ways to [configure DashO Home](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_dasho_home.html).
+Otherwise, the plugin needs to know where [DashO Home](https://www.preemptive.com/dasho/pro/userguide/en/install_installation.html#dasho-home) is so it can run DashO to protect the code.
+There are multiple ways to [configure DashO Home](https://www.preemptive.com/dasho/pro/userguide/en/ref_dagp_dasho_home.html).
 
 The wizard will have already added a `dasho { }` closure in `build.gradle` with a `home` line commented out.
 Uncommenting this line will set DashO Home to the location of the current DashO installation.
@@ -163,7 +163,7 @@ This will include a `Running:` line where you can see the full arguments used to
 
 ### Verbose Output
 
-If you want to see more information on what DashO is doing, you can add a `dasho` closure to `app/build.gradle` and [configure](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_config.html#dasho) `verbose true`.
+If you want to see more information on what DashO is doing, you can [configure](https://www.preemptive.com/dasho/pro/userguide/en/ref_dagp_config.html#dasho) `verbose true` inside the `dasho` closure in `app/build.gradle`.
 This will provide you with the verbose output from the protection process.
 
 ### Decompile the APK
