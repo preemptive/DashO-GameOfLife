@@ -1,6 +1,6 @@
 # DashO-GameOfLife
 
-A sample Android™ app that demonstrates using [PreEmptive Protection™ DashO™ for Android & Java](https://www.preemptive.com/products/dasho/overview) with the [DashO Gradle Plugin for Android](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_index.html) on an application with libraries and product flavors.
+A sample Android™ app that demonstrates using [PreEmptive Protection™ DashO™ for Android & Java](https://www.preemptive.com/products/dasho/overview) with the [DashO Gradle Plugin for Android](https://www.preemptive.com/dasho/pro/userguide/en/ref_dagp_index.html) on an application with libraries and product flavors.
 
 This sample is a [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) simulation application.
 This project consists of the app itself and a library that it uses.
@@ -60,7 +60,7 @@ When following the steps on the `master` branch, the following files were create
 
 >**Note:**
 >The plugin should find DashO automatically if DashO is installed in the default location.
->If not, there are multiple ways to [configure DashO Home](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_dasho_home.html).
+>If not, there are multiple ways to [configure DashO Home](https://www.preemptive.com/dasho/pro/userguide/en/ref_dagp_dasho_home.html).
 
 ## Run the Application
 
@@ -112,7 +112,7 @@ This will include a `Running:` line where you can see the full arguments used to
 
 ### Verbose Output
 
-If you want to see more information on what DashO is doing, you can add a `dasho` closure to `app/build.gradle` and [configure](https://www.preemptive.com/dasho/pro/10.0/userguide/en/ref_dagp_config.html#dasho) `verbose true`.
+If you want to see more information on what DashO is doing, you can [configure](https://www.preemptive.com/dasho/pro/userguide/en/ref_dagp_config.html#dasho) `verbose true` inside the `dasho` closure in `app/build.gradle`.
 This will provide you with the verbose output from the protection process.
 
 ### Decompile the APK
