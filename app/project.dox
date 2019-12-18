@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<dasho mode="android" version="10.1.0">
+<dasho mode="android" version="10.2.0">
     <controlflow option="on"/>
     <stringencrypt option="on"/>
+    <resourceencryption>
+        <assetencrypt>
+            <includelist>
+                <items regex="false" name="*.flac"/>
+                <items regex="false" name="*.png"/>
+            </includelist>
+            <excludelist>
+                <items regex="false" name="controls/buttons/bt-shadow-mask.png"/>
+                <items regex="false" name="music/**"/>
+            </excludelist>
+        </assetencrypt>
+        <rawresourceencrypt>
+            <includelist>
+                <items regex="false" name="*.dat"/>
+            </includelist>
+            <excludelist>
+                <items regex="false" name="menu_demo.vid"/>
+            </excludelist>
+        </rawresourceencrypt>
+    </resourceencryption>
     <injection/>
 </dasho>
