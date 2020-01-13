@@ -30,7 +30,7 @@ These instructions will demonstrate protecting the application with variant-spec
 ## Prerequisites
 
 * [Java™ 8](http://www.oracle.com/technetwork/java/index.html)
-* [PreEmptive Protection DashO for Android & Java v10.0.0](https://www.preemptive.com/products/dasho/downloads) (or later)
+* [PreEmptive Protection DashO for Android & Java v10.2.0](https://www.preemptive.com/products/dasho/downloads) (or later)
 * [Android Build Environment](https://developer.android.com/studio/index.html)
   * Platform v29
 
