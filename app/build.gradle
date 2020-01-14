@@ -66,8 +66,8 @@ dasho {
     // doxFilename "project.dox"
     // enabledBuildVariants "release"
     // excludeFromProtection null //See docs for details
-    // home 'C:/Program Files/PreEmptive Protection DashO 10.0/app' // for more information about DashO Home see the DashO User Guide
+    // home 'C:/Program Files/PreEmptive Protection DashO x.y/app' // for more information about DashO Home see the DashO User Guide
     // javaOptions "-Xmx1024M", "-Xms512M" //Normally has no default values
-    // searchVersion "10"
+    // searchVersion "x"
     // verbose false
 }
