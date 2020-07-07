@@ -32,7 +32,7 @@ These instructions will demonstrate protecting the application with variant-spec
 * [Java™ 8](http://www.oracle.com/technetwork/java/index.html)
 * [PreEmptive Protection DashO v10.2.0](https://www.preemptive.com/products/dasho/downloads) (or later)
 * [Android Build Environment](https://developer.android.com/studio/index.html)
-  * Platform v29
+  * Platform v30
 
 >**Note:** The Android-specific settings can be changed by editing the `build.gradle` files.
 
