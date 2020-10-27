@@ -5,29 +5,15 @@ import java.util.*
 /**
  * Class that represents the world of cells.
  */
-class World {
-    var width: Int
+class World(val width: Int, val height: Int, random: Boolean = false) {
+    var cells: Array<Cell>
         private set
-    var height: Int
-        private set
-    var cells: Array<Cell?>
-        private set
-    var board: Array<Array<Cell?>>
-        private set
+    val board: Array<Array<Cell>>
 
-    constructor(width: Int, height: Int) {
-        this.width = width
-        this.height = height
-        cells = arrayOfNulls(this.width * this.height)
-        board = Array(this.width) { arrayOfNulls(this.height) }
-        setup(false)
-    }
-
-    constructor(width: Int, height: Int, random: Boolean) {
-        this.width = width
-        this.height = height
-        cells = arrayOfNulls(this.width * this.height)
-        board = Array(this.width) { arrayOfNulls(this.height) }
+    init {
+        cells = mutableListOf<Cell>().toTypedArray()
+        val nullCell = Cell()
+        board = Array(this.width) { Array(this.height) { nullCell } }
         setup(random)
     }
 
@@ -37,7 +23,7 @@ class World {
     }
 
     private fun updateCells() {
-        val boardCells: MutableList<Cell?> = ArrayList()
+        val boardCells: MutableList<Cell> = ArrayList()
         for (i in 0 until width) for (j in 0 until height) boardCells.add(board[i][j])
         cells = boardCells.toTypedArray()
     }
@@ -72,11 +58,11 @@ class World {
     }
 
     fun kill(i: Int, j: Int) {
-        board[i][j]!!.die()
+        board[i][j].die()
     }
 
     fun revive(i: Int, j: Int) {
-        board[i][j]!!.reborn()
+        board[i][j].reborn()
     }
 
     fun liveNeighboursOf(i: Int, j: Int): Array<Cell> {
@@ -136,7 +122,7 @@ class World {
         val futureLiveCells: MutableList<Cell?> = ArrayList()
         val futureDeadCells: MutableList<Cell?> = ArrayList()
         for (cell in cells) {
-            val neighbours = liveNeighboursOf(cell!!.x, cell.y)
+            val neighbours = liveNeighboursOf(cell.x, cell.y)
             if (rule1(cell, neighbours)) futureDeadCells.add(cell)
             if (rule2(cell, neighbours)) futureLiveCells.add(cell)
             if (rule3(cell, neighbours)) futureDeadCells.add(cell)
@@ -151,19 +137,19 @@ class World {
         for (cell in deads) kill(cell!!.x, cell.y)
     }
 
-    private fun rule1(c: Cell?, n: Array<Cell>): Boolean {
-        return if (c!!.isAlive && n.size < 2) true else false
+    private fun rule1(c: Cell, n: Array<Cell>): Boolean {
+        return c.isAlive && n.size < 2
     }
 
-    private fun rule2(c: Cell?, n: Array<Cell>): Boolean {
-        return if (c!!.isAlive && (n.size == 3 || n.size == 2)) true else false
+    private fun rule2(c: Cell, n: Array<Cell>): Boolean {
+        return c.isAlive && (n.size == 3 || n.size == 2)
     }
 
-    private fun rule3(c: Cell?, n: Array<Cell>): Boolean {
-        return if (c!!.isAlive && n.size > 3) true else false
+    private fun rule3(c: Cell, n: Array<Cell>): Boolean {
+        return c.isAlive && n.size > 3
     }
 
-    private fun rule4(c: Cell?, n: Array<Cell>): Boolean {
-        return if (!c!!.isAlive && n.size == 3) true else false
+    private fun rule4(c: Cell, n: Array<Cell>): Boolean {
+        return !c.isAlive && n.size == 3
     }
 }

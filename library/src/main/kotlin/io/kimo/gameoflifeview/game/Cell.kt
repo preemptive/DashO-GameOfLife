@@ -3,31 +3,10 @@ package io.kimo.gameoflifeview.game
 /**
  * Class that represents a single cell in the game.
  */
-class Cell {
+class Cell(@JvmField val x: Int = 0, @JvmField val y: Int = 0, status: Boolean = true) {
     @JvmField
-    val x: Int
-    @JvmField
-    val y: Int
-    @JvmField
-    var isAlive: Boolean
+    var isAlive: Boolean = status
 
-    constructor() {
-        x = 0
-        y = 0
-        isAlive = true
-    }
-
-    constructor(x: Int, y: Int) {
-        this.x = x
-        this.y = y
-        isAlive = true
-    }
-
-    constructor(x: Int, y: Int, status: Boolean) {
-        this.x = x
-        this.y = y
-        isAlive = status
-    }
 
     override fun hashCode(): Int {
         return this.toString().hashCode()
