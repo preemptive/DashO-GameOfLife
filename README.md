@@ -4,6 +4,8 @@ A sample Android™ app that demonstrates using [PreEmptive Protection™ DashO�
 
 This sample is a [Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) simulation application.
 This project consists of the app itself and a library that it uses.
+The app is coded in Java™.
+The library is coded in Kotlin™.
 
 The application has two flavor dimensions: `view` and `monetization`.
 The `view` dimension determines if the application launches a `menu` with a list of two views or just launches a `single` view.
