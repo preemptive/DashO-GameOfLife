@@ -22,30 +22,28 @@ class GameOfLifeView : SurfaceView, Runnable {
     private var isRunning = false
     private var columnWidth = 1
     private var rowHeight = 1
-    var numberOfColumns = 1
-        private set
-    var numberOfRows = 1
-        private set
-    private var world: World? = null
+    private var numberOfColumns = 1
+    private var numberOfRows = 1
+    private val world: World
     private var allowInteraction = false
     private var proportion = DEFAULT_PROPORTION
     private var aliveColor = DEFAULT_ALIVE_COLOR
     private var deadColor = DEFAULT_DEAD_COLOR
 
     constructor(context: Context?) : super(context) {
-        calculateWorldParams()
+        world = calculateWorldParams()
     }
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
         val a = context.obtainStyledAttributes(attrs, R.styleable.GameOfLifeView, 0, 0)
         ensureCorrectAttributes(a)
-        calculateWorldParams()
+        world = calculateWorldParams()
     }
 
     constructor(context: Context, attrs: AttributeSet?, defStyle: Int) : super(context, attrs, defStyle) {
         val a = context.obtainStyledAttributes(attrs, R.styleable.GameOfLifeView, defStyle, 0)
         ensureCorrectAttributes(a)
-        calculateWorldParams()
+        world = calculateWorldParams()
     }
 
     fun setAllowInteraction(allowInteraction: Boolean) {
@@ -69,7 +67,7 @@ class GameOfLifeView : SurfaceView, Runnable {
         while (isRunning) {
             if (!holder.surface.isValid) continue
             val canvas = holder.lockCanvas()
-            world!!.rotate()
+            world.rotate()
             holder.unlockCanvasAndPost(drawCells(canvas))
             try {
                 //Slow down the action so the changes can be seen.
@@ -81,7 +79,7 @@ class GameOfLifeView : SurfaceView, Runnable {
     }
 
     fun setupBlinkers() {
-        world!!.setupBlinkers()
+        world.setupBlinkers()
     }
 
     fun start() {
@@ -103,12 +101,12 @@ class GameOfLifeView : SurfaceView, Runnable {
         }
     }
 
-    fun reviveCellsAt(x: Float, y: Float) {
-        var X = (x / proportion).toInt()
-        var Y = (y / proportion).toInt()
-        X = Math.min(Math.max(0, X), world!!.width - 1)
-        Y = Math.min(Math.max(0, Y), world!!.height - 1)
-        world!!.revive(X, Y)
+    private fun reviveCellsAt(coordinateX: Float, coordinateY: Float) {
+        var x = (coordinateX / proportion).toInt()
+        var y = (coordinateY / proportion).toInt()
+        x = 0.coerceAtLeast(x).coerceAtMost(world.width - 1)
+        y = 0.coerceAtLeast(y).coerceAtMost(world.height - 1)
+        world.revive(x, y)
     }
 
     fun getProportion(): Int {
@@ -138,7 +136,7 @@ class GameOfLifeView : SurfaceView, Runnable {
         invalidate()
     }
 
-    private fun calculateWorldParams() {
+    private fun calculateWorldParams() : World {
         val wm = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
         val display = wm.defaultDisplay
         val point = Point()
@@ -147,14 +145,14 @@ class GameOfLifeView : SurfaceView, Runnable {
         numberOfRows = point.y / proportion
         columnWidth = point.x / numberOfColumns
         rowHeight = point.y / numberOfRows
-        world = World(numberOfColumns, numberOfRows, true)
+        return World(numberOfColumns, numberOfRows, true)
     }
 
     private fun drawCells(canvas: Canvas): Canvas {
-        for (cell in world!!.cells) {
+        for (cell in world.cells) {
             val r = Rect()
             val p = Paint()
-            if (cell!!.isAlive) {
+            if (cell.isAlive) {
                 r[cell.x * columnWidth - 1, cell.y * rowHeight - 1, cell.x * columnWidth + columnWidth - 1] = cell.y * rowHeight + rowHeight - 1
                 p.color = aliveColor
             } else {

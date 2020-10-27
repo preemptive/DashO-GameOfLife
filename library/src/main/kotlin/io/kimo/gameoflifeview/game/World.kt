@@ -28,7 +28,7 @@ class World(val width: Int, val height: Int, random: Boolean = false) {
         cells = boardCells.toTypedArray()
     }
 
-    operator fun get(i: Int, j: Int): Cell? {
+    operator fun get(i: Int, j: Int): Cell {
         return board[i][j]
     }
 
@@ -71,49 +71,49 @@ class World(val width: Int, val height: Int, random: Boolean = false) {
         //up-left
         if (i - 1 >= 0 && j + 1 <= height - 1) {
             val neighbour = get(i - 1, j + 1)
-            if (neighbour!!.isAlive) liveNeighbours.add(neighbour)
+            if (neighbour.isAlive) liveNeighbours.add(neighbour)
         }
 
         //up
         if (j + 1 <= height - 1) {
             val neighbour = get(i, j + 1)
-            if (neighbour!!.isAlive) liveNeighbours.add(neighbour)
+            if (neighbour.isAlive) liveNeighbours.add(neighbour)
         }
 
         //up-right
         if (i + 1 <= width - 1 && j + 1 <= height - 1) {
             val neighbour = get(i + 1, j + 1)
-            if (neighbour!!.isAlive) liveNeighbours.add(neighbour)
+            if (neighbour.isAlive) liveNeighbours.add(neighbour)
         }
 
         //left
         if (i - 1 >= 0) {
             val neighbour = get(i - 1, j)
-            if (neighbour!!.isAlive) liveNeighbours.add(neighbour)
+            if (neighbour.isAlive) liveNeighbours.add(neighbour)
         }
 
         //right
         if (i + 1 <= width - 1) {
             val neighbour = get(i + 1, j)
-            if (neighbour!!.isAlive) liveNeighbours.add(neighbour)
+            if (neighbour.isAlive) liveNeighbours.add(neighbour)
         }
 
         //down-left
         if (i - 1 >= 0 && j - 1 >= 0) {
             val neighbour = get(i - 1, j - 1)
-            if (neighbour!!.isAlive) liveNeighbours.add(neighbour)
+            if (neighbour.isAlive) liveNeighbours.add(neighbour)
         }
 
         //down
         if (j - 1 >= 0) {
             val neighbour = get(i, j - 1)
-            if (neighbour!!.isAlive) liveNeighbours.add(neighbour)
+            if (neighbour.isAlive) liveNeighbours.add(neighbour)
         }
 
         //down-right
         if (i + 1 <= width - 1 && j - 1 >= 0) {
             val neighbour = get(i + 1, j - 1)
-            if (neighbour!!.isAlive) liveNeighbours.add(neighbour)
+            if (neighbour.isAlive) liveNeighbours.add(neighbour)
         }
         return liveNeighbours.toTypedArray()
     }
