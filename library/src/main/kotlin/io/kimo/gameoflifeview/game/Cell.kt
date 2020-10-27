@@ -33,9 +33,9 @@ class Cell {
         return this.toString().hashCode()
     }
 
-    override fun equals(otherCell: Any?): Boolean {
-        return if (otherCell == null) false else if (otherCell === this) true else if (otherCell !is Cell) false else {
-            this.hashCode() == otherCell.hashCode()
+    override fun equals(other: Any?): Boolean {
+        return if (other == null) false else if (other === this) true else if (other !is Cell) false else {
+            this.hashCode() == other.hashCode()
         }
     }
 
