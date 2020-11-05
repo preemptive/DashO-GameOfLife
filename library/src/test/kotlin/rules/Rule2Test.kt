@@ -20,7 +20,7 @@ class Rule2Test : TestCase() {
         world.kill(1, 0)
         world.kill(2, 0)
         world.rotate()
-        Assert.assertTrue(world[1, 1]!!.isAlive)
+        Assert.assertTrue(world[1, 1].isAlive)
     }
 
     @Test
@@ -31,6 +31,6 @@ class Rule2Test : TestCase() {
         world.kill(1, 0)
         world.kill(2, 0)
         world.rotate()
-        Assert.assertTrue(world[0, 2]!!.isAlive)
+        Assert.assertTrue(world[0, 2].isAlive)
     }
 }

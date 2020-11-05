@@ -5,8 +5,8 @@ import android.content.res.TypedArray
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
-import android.graphics.Point
 import android.graphics.Rect
+import android.os.Build
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.SurfaceView
@@ -46,6 +46,7 @@ class GameOfLifeView : SurfaceView, Runnable {
         world = calculateWorldParams()
     }
 
+    @Suppress("unused")
     fun setAllowInteraction(allowInteraction: Boolean) {
         this.allowInteraction = allowInteraction
     }
@@ -59,6 +60,7 @@ class GameOfLifeView : SurfaceView, Runnable {
         return false
     }
 
+    @Suppress("RedundantOverride")
     override fun performClick(): Boolean {
         return super.performClick()
     }
@@ -109,42 +111,50 @@ class GameOfLifeView : SurfaceView, Runnable {
         world.revive(x, y)
     }
 
+    @Suppress("unused")
     fun getProportion(): Int {
         return proportion
     }
 
+    @Suppress("unused")
     fun setProportion(proportion: Int) {
         this.proportion = proportion
         invalidate()
     }
 
+    @Suppress("unused")
     fun getAliveColor(): Int {
         return aliveColor
     }
 
+    @Suppress("unused")
     fun setAliveColor(aliveColor: Int) {
         this.aliveColor = aliveColor
         invalidate()
     }
 
+    @Suppress("unused")
     fun getDeadColor(): Int {
         return deadColor
     }
 
+    @Suppress("unused")
     fun setDeadColor(deadColor: Int) {
         this.deadColor = deadColor
         invalidate()
     }
 
     private fun calculateWorldParams() : World {
-        val wm = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-        val display = wm.defaultDisplay
-        val point = Point()
-        display.getSize(point)
-        numberOfColumns = point.x / proportion
-        numberOfRows = point.y / proportion
-        columnWidth = point.x / numberOfColumns
-        rowHeight = point.y / numberOfRows
+        val displayMetrics = resources.displayMetrics
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+            val wm = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+            @Suppress("DEPRECATION")
+            wm.defaultDisplay?.getRealMetrics(displayMetrics)
+        }
+        numberOfColumns = displayMetrics.widthPixels / proportion
+        numberOfRows = displayMetrics.heightPixels / proportion
+        columnWidth = displayMetrics.widthPixels / numberOfColumns
+        rowHeight = displayMetrics.heightPixels / numberOfRows
         return World(numberOfColumns, numberOfRows, true)
     }
 
@@ -165,7 +175,6 @@ class GameOfLifeView : SurfaceView, Runnable {
     }
 
     private fun ensureCorrectAttributes(styles: TypedArray) {
-
         //ensuring proportion
         val styledProportion = styles.getInt(R.styleable.GameOfLifeView_proportion, DEFAULT_PROPORTION)
         proportion = if (styledProportion > 0) {
