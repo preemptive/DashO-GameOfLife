@@ -18,13 +18,13 @@ class Rule3Test : TestCase() {
         world.kill(2, 2)
         world.kill(2, 0)
         world.rotate()
-        Assert.assertFalse(world[1, 1]!!.isAlive)
+        Assert.assertFalse(world[1, 1].isAlive)
     }
 
     @Test
     fun testCellsSurroundedByLiveNeighboursWillDie() {
         val world = World(3, 3)
         world.rotate()
-        Assert.assertFalse(world[1, 1]!!.isAlive)
+        Assert.assertFalse(world[1, 1].isAlive)
     }
 }
