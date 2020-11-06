@@ -28,7 +28,7 @@ The instructions on the `master` branch demonstrate protecting the `release` bui
 ## Prerequisites
 
 * [Java™ 8](http://www.oracle.com/technetwork/java/index.html)
-* [PreEmptive Protection DashO v10.2.0](https://www.preemptive.com/products/dasho/downloads) (or later)
+* [PreEmptive Protection DashO v11.1.0](https://www.preemptive.com/products/dasho/downloads) (or later)
 * [Android Build Environment](https://developer.android.com/studio/index.html)
   * Platform v30
 
