@@ -34,6 +34,6 @@ class Rule1Test : TestCase() {
         world.kill(1, 2)
         world.kill(2, 2)
         world.rotate()
-        Assert.assertFalse(world[1, 1]!!.isAlive)
+        Assert.assertFalse(world[1, 1].isAlive)
     }
 }

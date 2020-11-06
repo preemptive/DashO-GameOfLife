@@ -14,10 +14,17 @@ class CellTest : TestCase() {
     }
 
     @Test
-    fun testCoordinates() {
+    fun testDefaultCoordinates() {
         val cell = Cell()
-        Assert.assertNotNull("Must have the X coordinate", cell.x)
-        Assert.assertNotNull("Must have the Y coordinate", cell.y)
+        Assert.assertEquals("X should default to 0", 0, cell.x)
+        Assert.assertEquals("Y should default to 0", 0, cell.y)
+    }
+
+    @Test
+    fun testCoordinates() {
+        val cell = Cell(42, 24)
+        Assert.assertEquals(42, cell.x)
+        Assert.assertEquals(24, cell.y)
     }
 
     @Test

@@ -19,9 +19,9 @@ class WorldTest : TestCase() {
     fun testReviveCell() {
         val world = World(2, 2)
         world.kill(1, 0)
-        Assert.assertFalse(world[1, 0]!!.isAlive)
+        Assert.assertFalse(world[1, 0].isAlive)
         world.revive(1, 0)
-        Assert.assertTrue(world[1, 0]!!.isAlive)
+        Assert.assertTrue(world[1, 0].isAlive)
     }
 
     @Test
