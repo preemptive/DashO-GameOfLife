@@ -23,6 +23,7 @@ public abstract class AbstractGameOfLifeActivity extends AppCompatActivity {
         checkTheLock();
     }
 
+    @SuppressWarnings("UnusedReturnValue")
     private boolean checkTheLock() {
         if (locked == null) {
             locked = false;
@@ -30,6 +31,7 @@ public abstract class AbstractGameOfLifeActivity extends AppCompatActivity {
         return locked;
     }
 
+    @SuppressWarnings({"unused", "RedundantSuppression"}) //Used by DashO configuration
     private void setLocked(boolean b) {
         locked = b;
     }

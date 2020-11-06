@@ -2,6 +2,8 @@ package io.kimo.examples.gameoflifeview;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+        public @NonNull ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
             LayoutInflater layoutInflater = LayoutInflater.from(viewGroup.getContext());
             View view = layoutInflater.inflate(R.layout.item_example, viewGroup, false);
             return new ViewHolder(view);
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         private class ViewHolder extends RecyclerView.ViewHolder implements RecyclerView.OnClickListener {
 
-            private TextView text;
+            private final TextView text;
 
             private ViewHolder(View itemView) {
                 super(itemView);

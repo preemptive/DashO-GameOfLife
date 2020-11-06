@@ -24,10 +24,10 @@ public abstract class AbstractGameOfLifeActivity extends AppCompatActivity {
     private void checkTheLock() {
         if (locked == null) {
             locked = false;
-            return;
         }
     }
 
+    @SuppressWarnings({"unused", "RedundantSuppression"}) //Used by DashO configuration
     private void setLocked(boolean b) {
         locked = b;
     }

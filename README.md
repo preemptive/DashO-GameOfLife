@@ -86,10 +86,10 @@ Run `gradlew clean assembleRelease` to compile and protect all the release varia
 
 The four different variants can be simultaneously installed:
 
-* `gradlew installMenuFreeRelease` - Installs _DashO MF Game Of Life_.
-* `gradlew installMenuPaidRelease` - Installs _DashO MP Game Of Life_.
-* `gradlew installSingleFreeRelease` - Installs _DashO SF Game Of Life_.
-* `gradlew installSinglePaidRelease` - Installs _DashO SP Game Of Life_.
+* `gradlew installMenuFreeRelease` - Installs _MF Game Of Life_.
+* `gradlew installMenuPaidRelease` - Installs _MP Game Of Life_.
+* `gradlew installSingleFreeRelease` - Installs _SF Game Of Life_.
+* `gradlew installSinglePaidRelease` - Installs _SP Game Of Life_.
 
 ### Uninstall
 
