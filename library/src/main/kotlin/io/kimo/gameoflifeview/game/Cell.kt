@@ -1,5 +1,8 @@
 package io.kimo.gameoflifeview.game
 
+import io.kimo.gameoflifeview.Death
+import io.kimo.gameoflifeview.Life
+
 /**
  * Class that represents a single cell in the game.
  */
@@ -18,10 +21,12 @@ class Cell(@JvmField val x: Int = 0, @JvmField val y: Int = 0, status: Boolean =
         }
     }
 
+    @Death
     fun die() {
         isAlive = false
     }
 
+    @Life
     fun reborn() {
         isAlive = true
     }

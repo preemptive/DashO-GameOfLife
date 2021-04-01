@@ -11,12 +11,16 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.SurfaceView
 import android.view.WindowManager
+import io.kimo.gameoflifeview.Death
+import io.kimo.gameoflifeview.Life
 import io.kimo.gameoflifeview.R
 import io.kimo.gameoflifeview.game.World
 
 /**
  * Custom surface view that displays each round of the game.
  */
+@Life
+@Death
 class GameOfLifeView : SurfaceView, Runnable {
     private var thread: Thread? = null
     private var isRunning = false
