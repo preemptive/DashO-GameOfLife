@@ -28,7 +28,7 @@ The instructions on the `master` branch demonstrate protecting the `release` bui
 ## Prerequisites
 
 * [Java™ 8](http://www.oracle.com/technetwork/java/index.html)
-* [PreEmptive Protection DashO v11.1.0](https://www.preemptive.com/products/dasho/downloads) (or later)
+* [PreEmptive Protection DashO v11.2.0](https://www.preemptive.com/products/dasho/downloads) (or later)
 * [Android Build Environment](https://developer.android.com/studio/index.html)
   * Platform v30
 
@@ -61,8 +61,9 @@ When following the steps on the `master` branch, the following files were create
 * `app/project.dox` -  Created to configure the protection of the `paid` variants.
 
 >**Note:**
->The plugin should find DashO automatically if DashO is installed in the default location.
->If not, there are multiple ways to [configure DashO Home](https://www.preemptive.com/dasho/pro/userguide/en/ref_dagp_dasho_home.html).
+>The *DashO Gradle Plugin for Android* will automatically find DashO if it is installed in the default location.
+>Otherwise, the plugin needs to know where [DashO Home](https://www.preemptive.com/dasho/pro/userguide/en/install_installation.html#dasho-home) is so it can run DashO to protect the code.
+>There are multiple ways to [configure DashO Home](https://www.preemptive.com/dasho/pro/userguide/en/ref_dagp_dasho_home.html).
 
 ## Run the Application
 
@@ -137,7 +138,7 @@ This sample is based on [GameOfLifeView](https://github.com/thiagokimo/GameOfLif
 
 ## License
 
-    Copyright 2020 PreEmptive Solutions, LLC.
+    Copyright 2021 PreEmptive Solutions, LLC.
 
     Copyright 2011, 2012 Thiago Rocha
 
