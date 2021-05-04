@@ -32,7 +32,7 @@ These instructions will demonstrate protecting the application with variant-spec
 ## Prerequisites
 
 * [Java™ 8](http://www.oracle.com/technetwork/java/index.html)
-* [PreEmptive Protection DashO v10.2.0](https://www.preemptive.com/products/dasho/downloads) (or later)
+* [PreEmptive Protection DashO v11.2.0](https://www.preemptive.com/products/dasho/downloads) (or later)
 * [Android Build Environment](https://developer.android.com/studio/index.html)
   * Platform v30
 
@@ -108,7 +108,7 @@ If the application is run on an emulator, the entire view will be covered by osc
     2. Run `gradlew clean assembleSingleFreeRelease` from the command line.
     3. Click the refresh button once it is highlighted.
 5. Go to the `Checks->Emulator` page in the GUI.
-6. Click `Add` and choose `Emulator Check`
+6. Click `Add` and choose `Emulator Check...`
 7. Under `Locations`, check `checkTheLock()` under `AbstractGameOfLifeActivity`.
    (You will need to scroll down past the `androidx` packages and expand `AbstractGameOfLifeActivity` under `com.preemptive.dasho.example.gameoflife`.)
 8. Set the `Action` to `setLocked()` and click `OK`.
@@ -188,7 +188,7 @@ This sample is based on [GameOfLifeView](https://github.com/thiagokimo/GameOfLif
 
 ## License
 
-    Copyright 2020 PreEmptive Solutions, LLC.
+    Copyright 2021 PreEmptive Solutions, LLC.
 
     Copyright 2011, 2012 Thiago Rocha
 
