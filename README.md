@@ -188,7 +188,7 @@ This sample is based on [GameOfLifeView](https://github.com/thiagokimo/GameOfLif
 
 ## License
 
-    Copyright 2020 PreEmptive Solutions, LLC.
+    Copyright 2021 PreEmptive Solutions, LLC.
 
     Copyright 2011, 2012 Thiago Rocha
 
